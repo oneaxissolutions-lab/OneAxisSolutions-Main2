@@ -1,0 +1,14 @@
+# Netlify Redirects and Rewrites for React SPA
+
+# Force HTTPS
+http://oneaxissolutions.com/* https://oneaxissolutions.com/:splat 301!
+http://www.oneaxissolutions.com/* https://oneaxissolutions.com/:splat 301!
+
+# Force non-www (or www if preferred)
+https://www.oneaxissolutions.com/* https://oneaxissolutions.com/:splat 301!
+
+# SPA Fallback - redirect all routes to index.html for React Router
+/*    /index.html   200
+
+# Custom error pages
+/404  /index.html  404

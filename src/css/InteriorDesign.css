@@ -1,0 +1,1196 @@
+/* Interior Design Page Styles - Using Descendant Selectors */
+
+.interior-design-page {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+/* Scroll Stack Animation Sections */
+.interior-design-page .interior-section {
+    width: 100vw;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-x: hidden;
+}
+
+.interior-design-page .interior-section-1 {
+    height: 100vh;
+}
+
+.interior-design-page .interior-section-2 {
+    background: #FFFFFF;
+    min-height: 100vh;
+    height: auto;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+/* Custom Scrollbar */
+.interior-design-page::-webkit-scrollbar {
+    width: 0px;
+}
+
+.interior-design-page::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.interior-design-page::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.interior-design-page::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.interior-design-page .interior-design-container {
+    width: 100%;
+    opacity: 0;
+    animation: fadeInPage 0.8s ease-out forwards;
+}
+
+.interior-design-page .interior-design-container.loaded {
+    opacity: 1;
+}
+
+@keyframes fadeInPage {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hero Section */
+.interior-design-page .interior-hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    overflow: hidden;
+}
+
+/* Hero Background Carousel */
+.interior-design-page .interior-hero-backgrounds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.interior-design-page .interior-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    transform: scale(1);
+}
+
+.interior-design-page .interior-hero-bg.active {
+    opacity: 0.5;
+    animation: heroKenBurns 20s ease-out forwards;
+}
+
+@keyframes heroKenBurns {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* Remove old static background */
+.interior-design-page .interior-hero::before {
+    display: none;
+}
+
+.interior-design-page .interior-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+}
+
+.interior-design-page .interior-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 2rem;
+    animation: heroSlideUp 1s ease-out;
+}
+
+@keyframes heroSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.interior-design-page .interior-hero-subtitle {
+    display: block;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 50%, #7e9aff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.3s forwards, gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.interior-design-page .interior-hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 200;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+.interior-design-page .interior-hero-description {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.7s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+.interior-design-page .interior-hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.9s forwards;
+}
+
+.interior-design-page .interior-hero-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.interior-design-page .interior-hero-btn.primary {
+    background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 100%);
+    color: #ffffff;
+    border: 2px solid transparent;
+    box-shadow: 0 8px 25px rgba(255, 154, 118, 0.4);
+}
+
+.interior-design-page .interior-hero-btn.primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+}
+
+.interior-design-page .interior-hero-btn.primary:hover::before {
+    left: 100%;
+}
+
+.interior-design-page .interior-hero-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(255, 154, 118, 0.6);
+}
+
+.interior-design-page .interior-hero-btn.secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.interior-design-page .interior-hero-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.interior-design-page .interior-hero-scroll {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.interior-design-page .scroll-indicator {
+    width: 30px;
+    height: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    position: relative;
+    animation: scrollBounce 2s infinite;
+}
+
+.interior-design-page .scroll-indicator span {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 100%);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: scrollDot 2s infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes scrollDot {
+    0% {
+        top: 8px;
+        opacity: 1;
+    }
+    100% {
+        top: 32px;
+        opacity: 0;
+    }
+}
+
+/* Section Shared Styles */
+.interior-design-page .interior-section-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 50%, #7e9aff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    animation: gradientShift 4s ease infinite;
+}
+
+.interior-design-page .interior-section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+
+/* Philosophy Section */
+.interior-design-page .interior-philosophy {
+    padding: 8rem 2rem;
+    background: var(--background);
+}
+
+.interior-design-page .interior-philosophy-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.interior-design-page .interior-philosophy-content {
+    padding-right: 2rem;
+}
+
+.interior-design-page .interior-philosophy-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--muted-foreground);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.interior-design-page .interior-philosophy-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.interior-design-page .interior-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.interior-design-page .interior-stat-number {
+    font-size: 2.5rem;
+    font-weight: 300;
+    background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+}
+
+.interior-design-page .interior-stat-label {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.interior-design-page .interior-philosophy-image {
+    position: relative;
+}
+
+.interior-design-page .interior-image-wrapper {
+    position: relative;
+    padding-bottom: 125%;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+/* Philosophy Image Carousel */
+.interior-design-page .interior-slider-wrapper {
+    position: relative;
+}
+
+.interior-design-page .interior-image-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.interior-design-page .interior-carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out, transform 0.6s ease;
+}
+
+.interior-design-page .interior-carousel-image.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.interior-design-page .interior-slider-wrapper:hover .interior-carousel-image.active {
+    transform: scale(1.05);
+}
+
+/* Carousel Navigation Dots */
+.interior-design-page .interior-carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.interior-design-page .interior-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.interior-design-page .interior-dot.active {
+    background: linear-gradient(135deg, #ff9a76, #7e9aff);
+    width: 30px;
+    border-radius: 5px;
+}
+
+.interior-design-page .interior-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.interior-design-page .interior-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.4), transparent);
+    pointer-events: none;
+}
+
+/* Services Section */
+.interior-design-page .interior-services {
+    padding: 0 2rem 8rem;
+    background: var(--card);
+}
+
+.interior-design-page .interior-services-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 5rem;
+}
+
+.interior-design-page .interior-services-subtitle {
+    font-size: 1.125rem;
+    color: var(--muted-foreground);
+    font-weight: 300;
+}
+
+.interior-design-page .interior-services-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.interior-design-page .interior-service-card {
+    padding: 3rem 2rem;
+    background: var(--background);
+    border: 1px solid var(--border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    text-align: center;
+}
+
+.interior-design-page .interior-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 100%);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interior-design-page .interior-service-card:hover::before {
+    width: 100%;
+}
+
+.interior-design-page .interior-service-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 154, 118, 0.5);
+    box-shadow: 0 20px 40px rgba(255, 154, 118, 0.2);
+}
+
+.interior-design-page .interior-service-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.5rem;
+    color: #ff9a76;
+    transition: all 0.3s ease;
+}
+
+.interior-design-page .interior-service-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.interior-design-page .interior-service-card:hover .interior-service-icon {
+    transform: scale(1.1);
+    color: #ff7e9a;
+}
+
+.interior-design-page .interior-service-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+    white-space: pre-line;
+    line-height: 1.4;
+}
+
+.interior-design-page .interior-service-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    font-weight: 300;
+}
+
+/* Featured Designs Section */
+.interior-design-page .interior-featured-designs {
+    padding: 8rem 2rem;
+    background: var(--background);
+}
+
+.interior-design-page .interior-featured-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 4rem;
+}
+
+.interior-design-page .interior-featured-subtitle {
+    font-size: 1.125rem;
+    color: var(--muted-foreground);
+    font-weight: 300;
+    line-height: 1.75;
+}
+
+.interior-design-page .interior-featured-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    gap: 6rem;
+}
+
+.interior-design-page .interior-featured-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+}
+
+.interior-design-page .interior-featured-item.reverse {
+    direction: rtl;
+}
+
+.interior-design-page .interior-featured-item.reverse > * {
+    direction: ltr;
+}
+
+.interior-design-page .interior-featured-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 154, 118, 0.12), rgba(126, 154, 255, 0.15));
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 20px 40px rgba(30, 48, 91, 0.12);
+}
+
+.interior-design-page .interior-featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.interior-design-page .interior-featured-item:hover .interior-featured-image img {
+    transform: scale(1.05);
+}
+
+.interior-design-page .interior-featured-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.2), transparent 60%);
+    pointer-events: none;
+}
+
+.interior-design-page .interior-featured-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.interior-design-page .interior-featured-badge {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(255, 154, 118, 0.2), rgba(126, 154, 255, 0.2));
+    color: #1d1f2f;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.interior-design-page .interior-featured-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 300;
+    color: var(--foreground);
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.interior-design-page .interior-featured-description {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--muted-foreground);
+    margin: 0;
+}
+
+.interior-design-page .interior-featured-features {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: grid;
+    gap: 0.6rem;
+}
+
+.interior-design-page .interior-featured-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--muted-foreground);
+    line-height: 1.6;
+}
+
+.interior-design-page .interior-featured-features li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff9a76, #7e9aff);
+}
+
+.interior-design-page .interior-featured-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.interior-design-page .interior-stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.interior-design-page .interior-stat-item .stat-label {
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.interior-design-page .interior-stat-item .stat-value {
+    font-size: 1rem;
+    color: var(--foreground);
+    font-weight: 400;
+}
+
+/* Portfolio Section (keeping old for reference - can be removed) */
+.interior-design-page .interior-portfolio {
+    padding: 0 2rem 8rem;
+    background: var(--background);
+}
+
+.interior-design-page .interior-portfolio-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.interior-design-page .interior-portfolio-subtitle {
+    font-size: 1.125rem;
+    color: var(--muted-foreground);
+    font-weight: 300;
+}
+
+.interior-design-page .interior-category-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.interior-design-page .interior-filter-btn {
+    padding: 0.75rem 2rem;
+    background: transparent;
+    color: var(--muted-foreground);
+    border: 1px solid var(--border);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0;
+}
+
+.interior-design-page .interior-filter-btn:hover {
+    border-color: rgba(255, 154, 118, 0.5);
+    color: var(--foreground);
+}
+
+.interior-design-page .interior-filter-btn.active {
+    background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(255, 154, 118, 0.3);
+}
+
+.interior-design-page .interior-projects-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.interior-design-page .interior-project-card {
+    background: var(--card);
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+
+.interior-design-page .interior-project-card:hover {
+    transform: translateY(-5px);
+}
+
+.interior-design-page .interior-project-image {
+    position: relative;
+    padding-bottom: 66.67%;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.interior-design-page .interior-project-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interior-design-page .interior-project-card:hover .interior-project-image img {
+    transform: scale(1.1);
+}
+
+.interior-design-page .interior-project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 10, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.interior-design-page .interior-project-card:hover .interior-project-overlay {
+    opacity: 1;
+}
+
+.interior-design-page .interior-project-view {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 100%);
+    color: #ffffff;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+    box-shadow: 0 4px 15px rgba(255, 154, 118, 0.4);
+}
+
+.interior-design-page .interior-project-card:hover .interior-project-view {
+    transform: translateY(0);
+}
+
+.interior-design-page .interior-project-view:hover {
+    box-shadow: 0 6px 20px rgba(255, 154, 118, 0.6);
+}
+
+.interior-design-page .interior-project-info {
+    padding: 2rem;
+}
+
+.interior-design-page .interior-project-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--foreground);
+}
+
+.interior-design-page .interior-project-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.interior-design-page .interior-project-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+}
+
+.interior-design-page .interior-project-location,
+.interior-design-page .interior-project-area {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Process Section */
+.interior-design-page .interior-process {
+    padding: 0 2rem 8rem;
+    background: var(--card);
+}
+
+.interior-design-page .interior-process-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 5rem;
+}
+
+.interior-design-page .interior-process-timeline {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+.interior-design-page .interior-process-step {
+    text-align: center;
+    position: relative;
+}
+
+.interior-design-page .interior-step-number {
+    font-size: 4rem;
+    font-weight: 200;
+    background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+}
+
+.interior-design-page .interior-step-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+}
+
+.interior-design-page .interior-step-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    font-weight: 300;
+}
+
+/* CTA Section */
+.interior-design-page .interior-cta {
+    padding: 8rem 2rem;
+    background: #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+.interior-design-page .interior-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.interior-design-page .interior-cta-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.interior-design-page .interior-cta-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.interior-design-page .interior-cta-description {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.interior-design-page .interior-cta-btn {
+    display: inline-block;
+    padding: 1.25rem 3rem;
+    background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 100%);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(255, 154, 118, 0.4);
+}
+
+.interior-design-page .interior-cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.interior-design-page .interior-cta-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.interior-design-page .interior-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 154, 118, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .interior-design-page .interior-philosophy-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .interior-design-page .interior-philosophy-content {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .interior-design-page .interior-philosophy-text {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .interior-design-page .interior-projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .interior-design-page .interior-hero {
+        height: 90vh;
+    }
+
+    .interior-design-page .interior-hero-content {
+        padding: 0 1.5rem;
+    }
+
+    .interior-design-page .interior-hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .interior-design-page .interior-hero-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .interior-design-page .interior-philosophy {
+        padding: 5rem 1.5rem;
+    }
+
+    .interior-design-page .interior-philosophy-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .interior-design-page .interior-stat {
+        text-align: center;
+    }
+
+    .interior-design-page .interior-services,
+    .interior-design-page .interior-portfolio,
+    .interior-design-page .interior-process,
+    .interior-design-page .interior-cta {
+        padding: 5rem 1.5rem;
+    }
+
+    .interior-design-page .interior-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .interior-design-page .interior-projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .interior-design-page .interior-process-timeline {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .interior-design-page .interior-category-filter {
+        gap: 0.75rem;
+    }
+
+    .interior-design-page .interior-filter-btn {
+        padding: 0.625rem 1.5rem;
+        font-size: 0.75rem;
+    }
+
+    /* Featured Designs - Mobile */
+    .interior-design-page .interior-featured-designs {
+        padding: 5rem 1.5rem;
+    }
+
+    .interior-design-page .interior-featured-item,
+    .interior-design-page .interior-featured-item.reverse {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        direction: ltr;
+    }
+
+    .interior-design-page .interior-featured-image {
+        aspect-ratio: 16 / 10;
+    }
+
+    .interior-design-page .interior-featured-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .interior-design-page .interior-featured-grid {
+        gap: 4rem;
+    }
+
+    /* Philosophy Carousel - Mobile */
+    .interior-design-page .interior-carousel-dots {
+        bottom: 15px;
+        gap: 8px;
+    }
+
+    .interior-design-page .interior-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .interior-design-page .interior-dot.active {
+        width: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .interior-design-page .interior-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .interior-design-page .interior-section-title {
+        font-size: 1.75rem;
+    }
+
+    .interior-design-page .interior-project-info {
+        padding: 1.5rem;
+    }
+
+    .interior-design-page .interior-service-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Featured Designs - Extra Small Mobile */
+    .interior-design-page .interior-featured-image {
+        aspect-ratio: 4 / 3;
+        border-radius: 16px;
+    }
+
+    .interior-design-page .interior-featured-title {
+        font-size: 1.5rem;
+    }
+
+    .interior-design-page .interior-featured-description {
+        font-size: 0.95rem;
+    }
+
+    .interior-design-page .interior-featured-features li {
+        font-size: 0.9rem;
+    }
+}

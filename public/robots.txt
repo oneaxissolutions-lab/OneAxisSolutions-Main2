@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow admin or private routes if any
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://oneaxissolutions.com/sitemap.xml
