@@ -8,7 +8,7 @@ const AboutUs = () => {
   return (
     <section className={`aboutus-section ${isDark ? 'dark' : ''}`}>
       <div className="aboutus-container">
-        {/* Left Side - Icon and Image */}
+        
         <div className="aboutus-left">
           <div className="icon-and-image">
             <div className="aboutus-icon">
@@ -42,7 +42,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Right Side - Content */}
+        
         <div className="aboutus-right">
           <h2 className="aboutus-title">OUR <span className="gradient-accent">SERVICES</span></h2>
           <div className="aboutus-text">

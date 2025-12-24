@@ -72,7 +72,7 @@ const Testimonials = () => {
     return (
         <section className="testimonials-section">
             <div className="testimonials-container">
-                {/* Header */}
+                
                 <div className="testimonials-header">
                     <h2 className="testimonials-title">
                         What Our <span className="gradient-text">Clients Say</span>
@@ -82,7 +82,7 @@ const Testimonials = () => {
                     </p>
                 </div>
 
-                {/* Testimonial Slider */}
+               
                 <div className="testimonial-slider">
                     <button 
                         className="slider-btn prev-btn" 
@@ -134,7 +134,7 @@ const Testimonials = () => {
                     </button>
                 </div>
 
-                {/* Dots Navigation */}
+                
                 <div className="slider-dots">
                     {testimonials.map((_, index) => (
                         <button
@@ -147,7 +147,7 @@ const Testimonials = () => {
                 </div>
             </div>
 
-            {/* Background Decorations */}
+            
             <div className="testimonials-decoration testimonials-decoration-1"></div>
             <div className="testimonials-decoration testimonials-decoration-2"></div>
         </section>

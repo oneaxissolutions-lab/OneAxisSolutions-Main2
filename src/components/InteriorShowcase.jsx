@@ -8,7 +8,7 @@ const InteriorShowcase = () => {
   return (
     <section className={`showcase-section ${isDark ? 'dark' : ''}`} id="showcase">
       <div className="showcase-container">
-        {/* Left Side - Main Image */}
+        
         <div className="showcase-left">
           <div className="showcase-main-image">
             <img 
@@ -19,7 +19,7 @@ const InteriorShowcase = () => {
           </div>
         </div>
 
-        {/* Right Side - Content and Secondary Image */}
+        
         <div className="showcase-right">
           <div className="showcase-content">
             <p className="showcase-label">INTERIOR DESIGNING</p>
@@ -35,12 +35,19 @@ const InteriorShowcase = () => {
               We bring your vision to life with meticulous attention to detail and premium craftsmanship.
             </p>
             
-            <button className="showcase-cta">
+            
+            <a 
+              href="https://portfolio-five-tan-20.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="showcase-cta"
+              style={{ textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
+            >
               See Our Projects
-            </button>
+            </a>
           </div>
 
-          {/* Secondary Image - Bottom Right */}
+          
           <div className="showcase-secondary-image">
             <img 
               src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" 

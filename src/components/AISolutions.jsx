@@ -30,12 +30,12 @@ const AISolutions = () => {
   return (
     <section className={`ai-section ${isDark ? 'dark' : ''}`}>
       <div className="ai-container">
-        {/* Section Header */}
+        
         <div className="section-header-center">
           <p className="section-label">AI SOLUTIONS</p>
         </div>
         
-        {/* Left Content */}
+        
         <div className="ai-left">
           <h1 className="ai-main-title">
             Empower your business with <span className="gradient-accent">AI Solutions</span> that solve real problems.
@@ -66,10 +66,10 @@ const AISolutions = () => {
           </div>
         </div>
 
-        {/* Center - AI Interface Mockup */}
+       
         <div className="ai-center">
           <div className="ai-interface">
-            {/* Neural Network Visualization */}
+            
             <div className="neural-network">
               <div className="network-header">
                 <div className="header-indicator">
@@ -79,10 +79,10 @@ const AISolutions = () => {
                 <FaMicrochip className="chip-icon" />
               </div>
 
-              {/* Network Nodes */}
+            
               <div className="network-canvas">
                 <svg className="network-svg" viewBox="0 0 400 400">
-                  {/* Connection Lines */}
+                 
                   <g className="connections">
                     {[...Array(12)].map((_, i) => (
                       <line
@@ -99,7 +99,7 @@ const AISolutions = () => {
                     ))}
                   </g>
                   
-                  {/* Gradient Definition */}
+                  
                   <defs>
                     <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stopColor="#ff9a76" />
@@ -108,7 +108,7 @@ const AISolutions = () => {
                     </linearGradient>
                   </defs>
 
-                  {/* Input Layer Nodes */}
+                  
                   {[...Array(4)].map((_, i) => (
                     <circle
                       key={`input-${i}`}
@@ -121,7 +121,7 @@ const AISolutions = () => {
                     />
                   ))}
 
-                  {/* Hidden Layer Nodes */}
+                  
                   {[...Array(5)].map((_, i) => (
                     <circle
                       key={`hidden-${i}`}
@@ -134,7 +134,7 @@ const AISolutions = () => {
                     />
                   ))}
 
-                  {/* Output Layer Nodes */}
+                  
                   {[...Array(3)].map((_, i) => (
                     <circle
                       key={`output-${i}`}
@@ -147,7 +147,7 @@ const AISolutions = () => {
                     />
                   ))}
 
-                  {/* Center Core */}
+                  
                   <circle
                     cx="350"
                     cy="200"
@@ -158,7 +158,7 @@ const AISolutions = () => {
                 </svg>
               </div>
 
-              {/* AI Feature Cards */}
+              
               <div className="ai-feature-cards">
                 {aiFeatures.map((feature) => (
                   <div key={feature.id} className="ai-card">
@@ -174,7 +174,7 @@ const AISolutions = () => {
                 ))}
               </div>
 
-              {/* Processing Info */}
+              
               <div className="processing-info">
                 <div className="info-item">
                   <FaNetworkWired className="info-icon" />
@@ -195,7 +195,7 @@ const AISolutions = () => {
           </div>
         </div>
 
-        {/* Right Content */}
+        
         <div className="ai-right">
           <h2 className="ai-secondary-title">
             Next-generation AI that drives innovation.

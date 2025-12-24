@@ -4,6 +4,9 @@ import Ballpit from '../../Reactbits/Ballpit/Ballpit';
 import { HiLightningBolt } from 'react-icons/hi';
 import { MdDesignServices, MdCloud } from 'react-icons/md';
 import Footer from '../components/Footer';
+import Common from '../components/Common'; 
+import ScheduleModal from '../components/ScheduleModal';
+
 import {
     FaShieldAlt,
     FaMobile,
@@ -15,13 +18,16 @@ import {
 const BALLPIT_COLORS = [0xff9a76, 0xff7e9a, 0x7e9aff];
 
 const Softwares = () => {
-    // Detect if device is mobile/tablet for disabling ball interaction
+    
     const [isMobile, setIsMobile] = useState(() => {
         if (typeof window === 'undefined') {
             return false;
         }
         return window.innerWidth <= 1024;
     });
+
+    const [isScheduleOpen, setIsScheduleOpen] = useState(false);
+    const [isContactOpen, setIsContactOpen] = useState(false);
 
     useEffect(() => {
         const checkMobile = () => {
@@ -39,7 +45,9 @@ const Softwares = () => {
 
     return (
         <div className="softwares-container">
-            {/* Section 1 - Hero Section */}
+             <ScheduleModal isOpen={isScheduleOpen} onClose={() => setIsScheduleOpen(false)} />
+            <Common isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+
             <div className="section section-1" style={{ zIndex: 1 }}>
                 <Ballpit
                     colors={BALLPIT_COLORS}
@@ -49,7 +57,7 @@ const Softwares = () => {
                     gravity={0.05}
                 />
 
-                {/* Hero Content */}
+                
                 <div className="hero-content">
                     <h1 className="hero-title">
                         Innovative Software <span className="gradient-text">Solutions</span>
@@ -60,21 +68,25 @@ const Softwares = () => {
                     </p>
 
                     <div className="hero-buttons">
-                        <button className="btn-primary">
+                        {/* Added onClick here for Get Started */}
+                        <button 
+                            className="btn-primary"
+                            onClick={() => setIsContactOpen(true)}
+                        >
                             Get Started
                             <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </button>
-                        <button className="btn-secondary">View Services</button>
+                       
                     </div>
                 </div>
             </div>
 
-            {/* Section 2 - Elevation Narrative */}
+           
             <div className="section section-2" style={{ zIndex: 2 }}>
                 <div className="section-2-inner">
-                    {/* Expertise & Capabilities */}
+                    
                     <section className="softwares-section expertise-section">
                         <div className="section-heading">
                             <span className="section-eyebrow">Our Expertise</span>
@@ -132,7 +144,7 @@ const Softwares = () => {
                         </div>
                     </section>
 
-                    {/* Portfolio Showcase Grid */}
+                   
                     <section className="softwares-section portfolio-showcase-section">
                         <div className="section-heading">
                             <span className="section-eyebrow">Our Work</span>
@@ -230,7 +242,7 @@ const Softwares = () => {
                         </div>
                     </section>
 
-                    {/* Technology Stack */}
+                   
                     <section className="softwares-section stack-section">
                         <div className="section-heading">
                             <span className="section-eyebrow">Technology Stack</span>
@@ -280,7 +292,7 @@ const Softwares = () => {
                         </div>
                     </section>
 
-                    {/* AI & Future-Ready Solutions */}
+                   
                     <section className="softwares-section future-section">
                         <div className="future-copy">
                             <span className="section-eyebrow">AI & Future-Ready</span>
@@ -319,7 +331,7 @@ const Softwares = () => {
                         </div>
                     </section>
 
-                    {/* Approach / Why Choose Us */}
+                   
                     <section className="softwares-section approach-section">
                         <div className="section-heading">
                             <span className="section-eyebrow">Why Choose Us</span>
@@ -353,7 +365,7 @@ const Softwares = () => {
                         </div>
                     </section>
 
-                    {/* Process Visualization */}
+                    
                     <section className="softwares-section process-visual-section">
                         <div className="section-heading">
                             <span className="section-eyebrow">How We Work</span>
@@ -459,7 +471,7 @@ const Softwares = () => {
                         </div>
                     </section>
 
-                    {/* Client Success & Global Reach */}
+                   
                     <section className="softwares-section reach-section">
                         <div className="reach-heading">
                             <span className="section-eyebrow">Client Success</span>
@@ -506,7 +518,7 @@ const Softwares = () => {
                         </div>
                     </section>
 
-                    {/* About / Who We Are */}
+                    
                     <section className="softwares-section about-section">
                         <div className="section-copy">
                             <span className="section-eyebrow">Who We Are</span>
@@ -568,7 +580,7 @@ const Softwares = () => {
                         </div>
                     </section>
 
-                    {/* Team & Culture Highlights */}
+                    
                     <section className="softwares-section culture-section">
                         <div className="section-heading">
                             <span className="section-eyebrow">Our Culture</span>
@@ -637,7 +649,7 @@ const Softwares = () => {
                         </div>
                     </section>
 
-                    {/* Contact / CTA */}
+                   
                     <section className="softwares-section contact-section">
                         <div className="contact-card">
                             <span className="section-eyebrow">Let&apos;s Collaborate</span>
@@ -647,15 +659,22 @@ const Softwares = () => {
                                 with investment-ready milestones, technology recommendations, and acceleration models.
                             </p>
                             <div className="contact-actions">
-                                <button type="button" className="btn-primary">Book a Strategy Call</button>
-                                <button type="button" className="btn-secondary">Download Capability Deck</button>
+                               
+                                <button 
+                                  onClick={() => setIsScheduleOpen(true)}
+                                    type="button" 
+                                    className="btn-primary"
+                                >
+                                    Book a Strategy Call
+                                </button>
+                                
                             </div>
                         </div>
                     </section>
                 </div>
             </div>
             
-            {/* Footer Outside section-2 */}
+           
             <Footer></Footer>
         </div>
     );

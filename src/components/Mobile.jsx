@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser'; 
-import '../css/ContactModal.css';
+import '../css/ContactModal.css'; 
 
-const ContactModal = ({ isOpen, onClose }) => {
+const Mobile = ({ isOpen, onClose }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
-        service: '',
+        service: 'mobile',
         message: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,7 +32,7 @@ const ContactModal = ({ isOpen, onClose }) => {
         });
     };
 
-    
+   
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -42,26 +42,26 @@ const ContactModal = ({ isOpen, onClose }) => {
         const templateID = 'oneaxissolutions';
         const publicKey = 'bGlJCtEzndEoeGkgf';
 
-       
+      
         const fullMessage = `
-            New Contact Inquiry:
-            --------------------
-            Service Interested: ${formData.service}
+            New Mobile App Inquiry:
+            -----------------------
+            Platform Preference: ${formData.service}
             Phone Number: ${formData.phone}
             
-            Message:
+            App Idea / Details:
             ${formData.message}
         `;
 
-        
+       
         const templateParams = {
             name: formData.name,      
             email: formData.email,     
-            title: formData.service,  
+            title: formData.service,   
             message: fullMessage      
         };
 
-       
+        // 4. Send Email
         emailjs.send(serviceID, templateID, templateParams, publicKey)
             .then((response) => {
                 console.log('SUCCESS!', response.status, response.text);
@@ -74,7 +74,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                         name: '',
                         email: '',
                         phone: '',
-                        service: '',
+                        service: 'mobile',
                         message: ''
                     });
                     setShowSuccess(false);
@@ -83,7 +83,7 @@ const ContactModal = ({ isOpen, onClose }) => {
             }, (err) => {
                 console.log('FAILED...', err);
                 setIsSubmitting(false);
-                alert("Failed to send message. Please try again.");
+                alert("Failed to send request. Please try again.");
             });
     };
 
@@ -102,9 +102,9 @@ const ContactModal = ({ isOpen, onClose }) => {
                 
                 <div className="contact-modal-content">
                     <div className="contact-modal-header">
-                        <h2 className="contact-modal-title">Let's Connect</h2>
+                        <h2 className="contact-modal-title">Mobile App Project</h2>
                         <p className="contact-modal-subtitle">
-                            Tell us about your project and we'll get back to you within 24 hours
+                            Tell us about your app idea and we'll get back to you within 24 hours
                         </p>
                     </div>
 
@@ -134,7 +134,6 @@ const ContactModal = ({ isOpen, onClose }) => {
                                         placeholder="John Doe"
                                     />
                                 </div>
-
                                 <div className="form-group">
                                     <label htmlFor="email">Email *</label>
                                     <input
@@ -161,9 +160,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                                         placeholder="+1 (555) 000-0000"
                                     />
                                 </div>
-
                                 <div className="form-group">
-                                    <label htmlFor="service">Service Interested In *</label>
+                                    <label htmlFor="service">Platform Preference</label>
                                     <select
                                         id="service"
                                         name="service"
@@ -171,26 +169,23 @@ const ContactModal = ({ isOpen, onClose }) => {
                                         onChange={handleChange}
                                         required
                                     >
-                                        <option value="">Select a service</option>
-                                        <option value="Web & SaaS Development">Web & SaaS Development</option>
-                                        <option value="Mobile Development">Mobile Development</option>
-                                        <option value="AI Solutions">AI Solutions</option>
-                                        <option value="Interior Design">Interior Design</option>
-                                        <option value="Other">Other</option>
+                                        <option value="mobile"> Mobile App</option>
+                                        <option value="ios">iOS (iPhone)</option>
+                                        <option value="android">Android</option>
+                                        <option value="cross-platform">React Native / Flutter</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="message">Message *</label>
+                                <label htmlFor="message">Project Details</label>
                                 <textarea
                                     id="message"
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
-                                    required
-                                    rows="5"
-                                    placeholder="Tell us about your project..."
+                                    rows="4"
+                                    placeholder="Describe your app idea..."
                                 ></textarea>
                             </div>
 
@@ -199,19 +194,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                                 className="contact-submit-btn"
                                 disabled={isSubmitting}
                             >
-                                {isSubmitting ? (
-                                    <>
-                                        <span className="spinner"></span>
-                                        Sending...
-                                    </>
-                                ) : (
-                                    <>
-                                        Send Message
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" strokeLinecap="round" strokeLinejoin="round"/>
-                                        </svg>
-                                    </>
-                                )}
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
                             </button>
                         </form>
                     )}
@@ -221,4 +204,4 @@ const ContactModal = ({ isOpen, onClose }) => {
     );
 };
 
-export default ContactModal;
+export default Mobile;

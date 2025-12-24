@@ -17,7 +17,7 @@ const Statistics = () => {
         {
             id: 'projects',
             icon: <FaProjectDiagram />,
-            target: 250,
+            target: 49,
             suffix: '+',
             label: 'Projects Completed',
             color: '#ff9a76'
@@ -25,7 +25,7 @@ const Statistics = () => {
         {
             id: 'clients',
             icon: <FaUsers />,
-            target: 180,
+            target: 48,
             suffix: '+',
             label: 'Happy Clients',
             color: '#7e9aff'
@@ -33,7 +33,7 @@ const Statistics = () => {
         {
             id: 'experience',
             icon: <FaTrophy />,
-            target: 8,
+            target: 10,
             suffix: '+',
             label: 'Years Experience',
             color: '#ff7e9a'
@@ -95,7 +95,7 @@ const Statistics = () => {
     return (
         <section className="statistics-section" ref={sectionRef}>
             <div className="statistics-container">
-                {/* Header */}
+                
                 <div className="statistics-header">
                     <h2 className="statistics-title">
                         Our <span className="gradient-text">Impact</span> in Numbers
@@ -105,7 +105,7 @@ const Statistics = () => {
                     </p>
                 </div>
 
-                {/* Stats Grid */}
+                
                 <div className="statistics-grid">
                     {stats.map((stat, index) => (
                         <div 
@@ -140,7 +140,7 @@ const Statistics = () => {
                 </div>
             </div>
 
-            {/* Background Decorations */}
+           
             <div className="statistics-decoration statistics-decoration-1"></div>
             <div className="statistics-decoration statistics-decoration-2"></div>
             <div className="statistics-decoration statistics-decoration-3"></div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'; 
 import '../css/Home.css';
 import AboutUs from '../components/AboutUs';
 import MobileDev from '../components/MobileDev';
@@ -13,15 +13,30 @@ import Hyperspeed from '../../Reactbits/Hyperspeed/Hyperspeed';
 import { HiLightningBolt } from 'react-icons/hi';
 import { MdDesignServices } from 'react-icons/md';
 import { FaShieldAlt } from 'react-icons/fa';
+import ContactModal from '../components/ContactModal';
 
 const Home = () => {
+    
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    
+    const closeModal = () => setIsModalOpen(false);
+
     return (
         <div className="home-container">
-            {/* Section 1 - Hero Section */}
+           
+            {isModalOpen && (
+                <ContactModal 
+                    isOpen={isModalOpen} 
+                    onClose={closeModal} 
+                />
+            )}
+
+            
             <div className="section section-1" style={{ zIndex: 1 }}>
                 <Hyperspeed></Hyperspeed>
 
-                {/* Hero Content */}
+                
                 <div className="hero-content">
                     <div className="hero-text">
                         <h1 className="hero-title">
@@ -32,7 +47,11 @@ const Home = () => {
                             We craft cutting-edge solutions that accelerate your business forward
                         </p>
                         <div className="hero-buttons">
-                            <button className="btn-primary">
+                            
+                            <button 
+                                className="btn-primary" 
+                                onClick={() => setIsModalOpen(true)}
+                            >
                                 Get Started
                                 <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M5 12h14M12 5l7 7-7 7" />
@@ -63,23 +82,23 @@ const Home = () => {
 
             </div>
 
-            {/* Section 2 - Add your content here */}
+            
             <div className="section section-2" style={{ zIndex: 2 }}>
                 <AboutUs></AboutUs>
                 <MobileDev></MobileDev>
                 <WebSaaSDev></WebSaaSDev>
                 <InteriorShowcase></InteriorShowcase>
 
-                {/* Testimonials Section */}
+                
                 <Testimonials />
 
-                {/* Statistics Section */}
+                
                 <Statistics />
 
-                {/* CTA Section */}
+                
                 <CTA />
 
-                {/* FAQ Section */}
+                
                 <FAQ />
                 <Footer />
             </div>

@@ -71,7 +71,7 @@ const Portfolio = () => {
     return (
         <section className="portfolio-section">
             <div className="portfolio-container">
-                {/* Header */}
+                
                 <div className="portfolio-header">
                     <h2 className="portfolio-title">
                         Our Recent <span className="gradient-text">Projects</span>
@@ -81,7 +81,7 @@ const Portfolio = () => {
                     </p>
                 </div>
 
-                {/* Filter Buttons */}
+               
                 <div className="portfolio-filters">
                     {filters.map((filter) => (
                         <button
@@ -94,7 +94,7 @@ const Portfolio = () => {
                     ))}
                 </div>
 
-                {/* Projects Grid */}
+                
                 <div className="portfolio-grid">
                     {filteredProjects.map((project, index) => (
                         <div 
@@ -124,7 +124,7 @@ const Portfolio = () => {
                     ))}
                 </div>
 
-                {/* View All Button */}
+                
                 <div className="portfolio-cta">
                     <button className="view-all-btn">
                         View All Projects
@@ -133,7 +133,7 @@ const Portfolio = () => {
                 </div>
             </div>
 
-            {/* Background Decorations */}
+            
             <div className="portfolio-decoration portfolio-decoration-1"></div>
             <div className="portfolio-decoration portfolio-decoration-2"></div>
         </section>

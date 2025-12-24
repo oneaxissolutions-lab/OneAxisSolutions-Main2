@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../css/InteriorDesign.css';
 import Footer from '../components/Footer';
-
-// Import images from assets
+import ScheduleModal from '../components/ScheduleModal'; 
+import Interior from '../components/Interior'; 
 import Interior1 from '../assets/Interior1.jpeg';
 import Interior2 from '../assets/Interior2.jpeg';
 import interior3 from '../assets/interior3.jpeg';
@@ -25,18 +25,18 @@ const InteriorDesign = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [currentHeroImage, setCurrentHeroImage] = useState(0);
     const [currentPhilosophyImage, setCurrentPhilosophyImage] = useState(0);
-
-    // Hero carousel images
-    const heroImages = [Interior1, Interior2, interior3, interior4, interior5];
     
-    // Philosophy section carousel images
+    
+    const [isScheduleOpen, setIsScheduleOpen] = useState(false);
+    const [isInteriorOpen, setIsInteriorOpen] = useState(false); 
+
+    const heroImages = [Interior1, Interior2, interior3, interior4, interior5];
     const philosophyImages = [interior6, interior7, interior9, interior10, interior11];
 
     useEffect(() => {
         setIsLoaded(true);
     }, []);
 
-    // Hero background carousel
     useEffect(() => {
         const heroInterval = setInterval(() => {
             setCurrentHeroImage((prev) => (prev + 1) % heroImages.length);
@@ -44,7 +44,6 @@ const InteriorDesign = () => {
         return () => clearInterval(heroInterval);
     }, [heroImages.length]);
 
-    // Philosophy image carousel
     useEffect(() => {
         const philosophyInterval = setInterval(() => {
             setCurrentPhilosophyImage((prev) => (prev + 1) % philosophyImages.length);
@@ -60,7 +59,6 @@ const InteriorDesign = () => {
         { id: 'minimalist', name: 'Minimalist' }
     ];
 
-    // Featured Designs Data
     const featuredDesigns = [
         {
             id: 1,
@@ -77,7 +75,7 @@ const InteriorDesign = () => {
             stats: {
                 area: '8,500 sq ft',
                 year: '2024',
-                location: 'Beverly Hills, CA'
+                location: 'Delhi'
             }
         },
         {
@@ -95,7 +93,7 @@ const InteriorDesign = () => {
             stats: {
                 area: '4,200 sq ft',
                 year: '2024',
-                location: 'Manhattan, NY'
+                location: 'Gurugram'
             }
         },
         {
@@ -113,7 +111,7 @@ const InteriorDesign = () => {
             stats: {
                 area: '12,000 sq ft',
                 year: '2023',
-                location: 'London, UK'
+                location: 'Ghaziabad'
             }
         },
         {
@@ -131,7 +129,7 @@ const InteriorDesign = () => {
             stats: {
                 area: '1,800 sq ft',
                 year: '2024',
-                location: 'Paris, France'
+                location: 'Noida'
             }
         },
         {
@@ -149,7 +147,7 @@ const InteriorDesign = () => {
             stats: {
                 area: '3,600 sq ft',
                 year: '2023',
-                location: 'Stockholm, Sweden'
+                location: 'Gurgaon'
             }
         },
         {
@@ -167,7 +165,7 @@ const InteriorDesign = () => {
             stats: {
                 area: '6,200 sq ft',
                 year: '2024',
-                location: 'Malibu, CA'
+                location: 'Delhi'
             }
         }
     ];
@@ -179,7 +177,7 @@ const InteriorDesign = () => {
             category: 'residential',
             image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80',
             description: 'A serene living space combining functionality with aesthetic beauty',
-            location: 'Beverly Hills, CA',
+            location: 'Delhi',
             area: '4,500 sq ft'
         },
         {
@@ -188,17 +186,17 @@ const InteriorDesign = () => {
             category: 'commercial',
             image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
             description: 'Contemporary workspace designed for productivity and elegance',
-            location: 'Manhattan, NY',
+            location: 'Gurugram',
             area: '3,200 sq ft'
         },
         {
             id: 3,
-            title: 'Luxury Penthouse',
+            title: 'Luxury Flat',
             category: 'luxury',
             image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
             description: 'Opulent living at its finest with panoramic city views',
-            location: 'Dubai Marina',
-            area: '6,800 sq ft'
+            location: 'Ghaziabad',
+            area: '1500 sq ft'
         },
         {
             id: 4,
@@ -206,7 +204,7 @@ const InteriorDesign = () => {
             category: 'minimalist',
             image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
             description: 'Clean lines and natural materials create a peaceful sanctuary',
-            location: 'Stockholm, Sweden',
+            location: 'Noida',
             area: '2,800 sq ft'
         },
         {
@@ -215,7 +213,7 @@ const InteriorDesign = () => {
             category: 'commercial',
             image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
             description: 'Welcoming guests with timeless elegance and sophistication',
-            location: 'Paris, France',
+            location: 'Gurgaon',
             area: '5,000 sq ft'
         },
         {
@@ -224,8 +222,8 @@ const InteriorDesign = () => {
             category: 'luxury',
             image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&q=80',
             description: 'Where modern architecture meets luxurious comfort',
-            location: 'Malibu, CA',
-            area: '7,200 sq ft'
+            location: 'Delhi',
+            area: '4,000 sq ft'
         }
     ];
 
@@ -285,12 +283,20 @@ const InteriorDesign = () => {
 
     return (
         <div className="interior-design-page">
-            {/* Section 1 - Hero Section */}
+            
+            
+            
+           
+            <ScheduleModal isOpen={isScheduleOpen} onClose={() => setIsScheduleOpen(false)} />
+            
+           
+            <Interior isOpen={isInteriorOpen} onClose={() => setIsInteriorOpen(false)} />
+
             <div className="interior-section interior-section-1" style={{ zIndex: 1 }}>
                 <div className={`interior-design-container ${isLoaded ? 'loaded' : ''}`}>
-                    {/* Hero Section */}
+                    
                     <section className="interior-hero">
-                        {/* Background Image Carousel */}
+                      
                         <div className="interior-hero-backgrounds">
                             {heroImages.map((image, index) => (
                                 <div
@@ -310,12 +316,13 @@ const InteriorDesign = () => {
                                 Transforming spaces into timeless masterpieces of elegance and sophistication
                             </p>
                             <div className="interior-hero-buttons">
-                                <a href="#portfolio" className="interior-hero-btn primary">
+                                <a href="https://portfolio-five-tan-20.vercel.app/" className="interior-hero-btn primary">
                                     View Portfolio
                                 </a>
-                                <a href="#contact" className="interior-hero-btn secondary">
+                                
+                                <button onClick={() => setIsScheduleOpen(true)} className="interior-hero-btn secondary">
                                     Schedule Consultation
-                                </a>
+                                </button>
                             </div>
                         </div>
                         <div className="interior-hero-scroll">
@@ -327,12 +334,12 @@ const InteriorDesign = () => {
                 </div>
             </div>
 
-            {/* Section 2 - Content */}
+            
             <div className="interior-section interior-section-2" style={{ zIndex: 2 }}>
                 <div className={`interior-design-container ${isLoaded ? 'loaded' : ''}`}>
 
 
-                {/* Philosophy Section */}
+                
                 <section className="interior-philosophy">
                     <div className="interior-philosophy-container">
                         <div className="interior-philosophy-content">
@@ -348,11 +355,11 @@ const InteriorDesign = () => {
                             </p>
                             <div className="interior-philosophy-stats">
                                 <div className="interior-stat">
-                                    <span className="interior-stat-number">200+</span>
+                                    <span className="interior-stat-number">10+</span>
                                     <span className="interior-stat-label">Projects Completed</span>
                                 </div>
                                 <div className="interior-stat">
-                                    <span className="interior-stat-number">15+</span>
+                                    <span className="interior-stat-number">10+</span>
                                     <span className="interior-stat-label">Years Experience</span>
                                 </div>
                                 <div className="interior-stat">
@@ -363,7 +370,7 @@ const InteriorDesign = () => {
                         </div>
                         <div className="interior-philosophy-image">
                             <div className="interior-image-wrapper interior-slider-wrapper">
-                                {/* Image Carousel */}
+                                
                                 <div className="interior-image-carousel">
                                     {philosophyImages.map((image, index) => (
                                         <img
@@ -374,7 +381,7 @@ const InteriorDesign = () => {
                                         />
                                     ))}
                                 </div>
-                                {/* Navigation Dots */}
+                               
                                 <div className="interior-carousel-dots">
                                     {philosophyImages.map((_, index) => (
                                         <button
@@ -391,7 +398,7 @@ const InteriorDesign = () => {
                     </div>
                 </section>
 
-                {/* Services Section */}
+                
                 <section className="interior-services">
                     <div className="interior-services-header">
                         <span className="interior-section-label">What We Offer</span>
@@ -411,7 +418,7 @@ const InteriorDesign = () => {
                     </div>
                 </section>
 
-                {/* Featured Designs Section */}
+                
                 <section className="interior-featured-designs">
                     <div className="interior-featured-header">
                         <span className="interior-section-label">Our Masterpieces</span>
@@ -460,7 +467,7 @@ const InteriorDesign = () => {
                     </div>
                 </section>
 
-                {/* Process Section */}
+                
                 <section className="interior-process">
                     <div className="interior-process-header">
                         <span className="interior-section-label">Our Process</span>
@@ -506,23 +513,27 @@ const InteriorDesign = () => {
                     </div>
                 </section>
 
-                {/* CTA Section */}
+                
                 <section className="interior-cta">
                     <div className="interior-cta-content">
                         <h2 className="interior-cta-title">Ready to Transform Your Space?</h2>
                         <p className="interior-cta-description">
                             Let's create something extraordinary together. Schedule a consultation with our design experts.
                         </p>
-                        <a href="#contact" className="interior-cta-btn">
+                       
+                        <button 
+                            className="interior-cta-btn"
+                            onClick={() => setIsInteriorOpen(true)}
+                        >
                             Get Started Today
-                        </a>
+                        </button>
                     </div>
                 </section>
                 </div>
             <Footer />
             </div>
 
-            {/* Footer */}
+            
         </div>
     );
 };

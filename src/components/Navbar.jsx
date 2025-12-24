@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import '../css/Navbar.css';
 import ContactModal from './ContactModal';
 
+import logoImg from '../assets/logo.png';
+
 const Navbar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
@@ -12,7 +14,7 @@ const Navbar = () => {
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
-        // Prevent body scroll when sidebar is open
+        
         if (!isSidebarOpen) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -34,7 +36,7 @@ const Navbar = () => {
         setIsContactModalOpen(false);
     };
 
-    // Reset scroll position on route change
+    
     useEffect(() => {
         window.scrollTo(0, 0);
         const homeContainer = document.querySelector('.home-container');
@@ -53,13 +55,13 @@ const Navbar = () => {
         setLastScrollY(0);
     }, [location.pathname]);
 
-    // Universal scroll implementation that works on all pages
+    
     useEffect(() => {
         const controlNavbar = () => {
-            // Try to get scroll from window first, then try home-container, softwares-container, or interior-design-page
+
             let currentScrollY = window.pageYOffset || window.scrollY;
             
-            // If window scroll is 0, check for custom scroll containers
+            
             if (currentScrollY === 0) {
                 const homeContainer = document.querySelector('.home-container');
                 const softwaresContainer = document.querySelector('.softwares-container');
@@ -74,15 +76,15 @@ const Navbar = () => {
                 }
             }
             
-            // Always show navbar at the very top
+            
             if (currentScrollY < 10) {
                 setIsVisible(true);
             }
-            // Hide when scrolling down past 100px
+            
             else if (currentScrollY > lastScrollY && currentScrollY > 100) {
                 setIsVisible(false);
             }
-            // Show when scrolling up
+            
             else if (currentScrollY < lastScrollY) {
                 setIsVisible(true);
             }
@@ -90,9 +92,9 @@ const Navbar = () => {
             setLastScrollY(currentScrollY);
         };
 
-        // Small delay to ensure DOM is ready after navigation
+        
         const timer = setTimeout(() => {
-            // Add listeners to both window and container elements
+            
             window.addEventListener('scroll', controlNavbar, { passive: true });
             
             const homeContainer = document.querySelector('.home-container');
@@ -129,7 +131,7 @@ const Navbar = () => {
         };
     }, [lastScrollY, location.pathname]);
 
-    // Cleanup body overflow on unmount
+    
     useEffect(() => {
         return () => {
             document.body.style.overflow = 'unset';
@@ -139,15 +141,18 @@ const Navbar = () => {
     return (
         <nav className={`navbar ${!isVisible ? 'navbar-hidden' : ''}`}>
             <div className="navbar-container">
-                {/* Logo */}
+            
+                
                 <Link to="/" className="navbar-logo">
-                    <div className="logo-text">
-                        <span className="logo-one">One</span>
-                        <span className="logo-axis">Axis</span>
-                    </div>
+                    <img 
+                        src={logoImg} 
+                        alt="OneAxis Logo" 
+                        className="navbar-logo-img" 
+                        
+                    />
                 </Link>
 
-                {/* Desktop Navigation */}
+                
                 <div className="navbar-menu">
                     <Link to="/" className="nav-link">Home</Link>
                     
@@ -167,31 +172,42 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                {/* Desktop Contact Button */}
-                <button onClick={openContactModal} className="contact-btn">Contact Us</button>
+                
+                <button 
+                className="contact-btn" 
+                onClick={() => window.open('https://wa.me/918954535455', '_blank')}
+            >
+                Contact Us
+            </button>
 
-                {/* Mobile Menu Toggle */}
-                <button className="mobile-menu-toggle" onClick={toggleSidebar} aria-label="Toggle menu">
-                    <span className={`hamburger ${isSidebarOpen ? 'active' : ''}`}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </button>
-            </div>
+            
+            <button className="mobile-menu-toggle" onClick={toggleSidebar} aria-label="Toggle menu">
+                <span className={`hamburger ${isSidebarOpen ? 'active' : ''}`}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+        </div>
 
-            {/* Mobile Sidebar */}
+        
             {isSidebarOpen && (
                 <div className="sidebar-overlay" onClick={closeSidebar}></div>
             )}
             <div className={`mobile-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
+                    
                     <div className="sidebar-logo">
-                        <div className="logo-text">
-                            <span className="logo-one">One</span>
-                            <span className="logo-axis">Axis</span>
-                        </div>
-                        <div className="logo-underline"></div>
+                       
+                        <Link to="/" onClick={closeSidebar}>
+                            <img 
+                                src={logoImg} 
+                                alt="OneAxis Logo" 
+                                className="sidebar-logo-img"
+                                
+                            />
+                        </Link>
+                       
                     </div>
                     <button className="sidebar-close" onClick={closeSidebar} aria-label="Close menu">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -221,7 +237,7 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Contact Modal */}
+            
             <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
         </nav>
     );

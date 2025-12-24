@@ -16,7 +16,7 @@ const Footer = () => {
     return (
         <footer className="footer-section">
             <div className="footer-container">
-                {/* Top Section */}
+                
                 <div className="footer-top">
                     <div className="footer-brand">
                         <h2 className="footer-logo">
@@ -26,16 +26,47 @@ const Footer = () => {
                             Transforming visions into digital excellence. We craft innovative solutions that drive your business forward.
                         </p>
                         <div className="footer-social">
-                            <a href="#" className="social-link" aria-label="LinkedIn">
+                          
+                            <a 
+                                href="https://www.linkedin.com/in/oneaxis-solutions-695991394" 
+                                className="social-link" 
+                                aria-label="LinkedIn"
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                            >
                                 <FaLinkedinIn />
                             </a>
-                            <a href="#" className="social-link" aria-label="Twitter">
+
+                           
+                            <a 
+                                href="https://x.com/home" 
+                                className="social-link" 
+                                aria-label="Twitter"
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                            >
                                 <FaTwitter />
                             </a>
-                            <a href="#" className="social-link" aria-label="Instagram">
+
+                           
+                            <a 
+                                href="https://www.instagram.com/" 
+                                className="social-link" 
+                                aria-label="Instagram"
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                            >
                                 <FaInstagram />
                             </a>
-                            <a href="#" className="social-link" aria-label="Facebook">
+
+                           
+                            <a 
+                                href="https://www.facebook.com/profile.php?id=61582456516681" 
+                                className="social-link" 
+                                aria-label="Facebook"
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                            >
                                 <FaFacebookF />
                             </a>
                         </div>
@@ -73,7 +104,8 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <FaPhone className="contact-icon" />
-                                    <a href="tel:+918449844995">+91 84498 44995</a>
+                                   
+                                    <a href="tel:+918954535455">+91 89545 35455</a>
                                 </li>
                                 <li>
                                     <FaMapMarkerAlt className="contact-icon" />
@@ -84,10 +116,10 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Divider */}
+                
                 <div className="footer-divider"></div>
 
-                {/* Bottom Section */}
+               
                 <div className="footer-bottom">
                     <p className="footer-copyright">
                         © {currentYear} OneAxis. All rights reserved.
@@ -102,7 +134,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Background Decorations */}
+            
             <div className="footer-decoration footer-decoration-1"></div>
             <div className="footer-decoration footer-decoration-2"></div>
         </footer>

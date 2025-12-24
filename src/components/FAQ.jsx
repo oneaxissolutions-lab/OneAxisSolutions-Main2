@@ -47,7 +47,7 @@ const FAQ = () => {
     return (
         <section className="faq-section">
             <div className="faq-container">
-                {/* Header */}
+                
                 <div className="faq-header">
                     <div className="faq-icon-wrapper">
                         <FaQuestionCircle className="faq-main-icon" />
@@ -60,7 +60,7 @@ const FAQ = () => {
                     </p>
                 </div>
 
-                {/* FAQ List */}
+            
                 <div className="faq-list">
                     {faqs.map((faq, index) => (
                         <div 
@@ -84,19 +84,27 @@ const FAQ = () => {
                     ))}
                 </div>
 
-                {/* CTA Section */}
+                
                 <div className="faq-cta">
                     <p className="faq-cta-text">Still have questions?</p>
-                    <button className="faq-cta-button">
+                    
+                    
+                    <a 
+                        href="https://wa.me/918954535455" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="faq-cta-button"
+                        style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                    >
                         Contact Us
                         <svg className="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
 
-            {/* Background Decorations */}
+            
             <div className="faq-decoration faq-decoration-1"></div>
             <div className="faq-decoration faq-decoration-2"></div>
         </section>
