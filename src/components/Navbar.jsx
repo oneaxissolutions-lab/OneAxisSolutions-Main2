@@ -222,7 +222,7 @@ const Navbar = () => {
                     <div className="sidebar-dropdown">
                         <div className="sidebar-dropdown-label">Services</div>
                         <div className="sidebar-dropdown-content">
-                            <Link to="/softwares" className="sidebar-sublink" onClick={closeSidebar}>Website Development</Link>
+                            <Link to="/Webdevelopment" className="sidebar-sublink" onClick={closeSidebar}>Website Development</Link>
                             <Link to="/softwares" className="sidebar-sublink" onClick={closeSidebar}>Mobile Development</Link>
                             
                             <Link to="/interior" className="sidebar-sublink" onClick={closeSidebar}>Interior Design</Link>
