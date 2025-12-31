@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import InteriorDesign from './pages/InteriorDesign'
 import Softwares from './pages/Softwares'
+import Webdevelopment from './pages/Webdevelopment'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/Webdevelopment" element={<Webdevelopment />} />
         <Route path="/interior" element={<InteriorDesign />} />
         <Route path="/softwares" element={<Softwares />} />
       </Routes>

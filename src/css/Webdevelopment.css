@@ -1,0 +1,463 @@
+/* --- Global Section Styling --- */
+.web-agency-section {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 5%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.web-agency-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-width: 1300px;
+  width: 100%;
+  gap: 80px;
+}
+
+/* --- Entrance Animations --- */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-left { animation: slideInLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+.animate-right { 
+  animation: slideInRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+  animation-delay: 0.2s; 
+  opacity: 0; 
+}
+
+/* --- 3D Laptop Design --- */
+.web-agency-laptop-box {
+  flex: 1.2;
+  perspective: 2000px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.laptop-3d-frame {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out;
+}
+
+.laptop-screen-unit {
+  background: #000;
+  border: 12px solid #1a1a1a;
+  border-radius: 20px 20px 2px 2px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+}
+
+.laptop-keyboard-unit {
+  height: 14px;
+  background: linear-gradient(to bottom, #d1d5db, #4b5563);
+  width: 110%;
+  margin-left: -5%;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+}
+
+/* --- Internal Screen UI --- */
+.internal-ui-3d {
+  height: 100%;
+  background: #050505;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-mini-nav { display: flex; justify-content: space-between; padding: 15px; }
+.mini-logo { font-size: 12px; color: #fff; font-weight: 800; }
+.mini-logo span { color: #3b82f6; }
+
+.ui-3d-content { flex: 1; padding: 20px; position: relative; }
+.three-d-sphere { position: absolute; border-radius: 50%; filter: blur(2px); animation: float 5s ease-in-out infinite; }
+.s1 { width: 100px; height: 100px; background: radial-gradient(circle at 30% 30%, #3b82f6, #000); top: 5%; right: -20px; }
+.s2 { width: 60px; height: 60px; background: radial-gradient(circle at 30% 30%, #8b5cf6, #000); bottom: 10%; left: 20%; opacity: 0.4; }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+.badge-3d { background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.hero-text-3d h2 { color: #fff; font-size: 2rem; line-height: 1; margin: 15px 0; }
+.hero-text-3d b { background: linear-gradient(90deg, #3b82f6, #00d2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+.glass-grid-3d { display: flex; gap: 15px; margin-top: 20px; }
+.glass-card-mini { flex: 1; background: rgba(255,255,255,0.05); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 10px; }
+.g-line { height: 4px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 8px; }
+
+/* --- Floating Pills --- */
+.tech-pills-floating {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.pill {
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+}
+
+/* --- Content Styling --- */
+.web-agency-content { flex: 1; }
+.tagline { color: #ff7e9a; font-weight: 800; font-size: 0.85rem; letter-spacing: 2px; }
+.display-title { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 900; line-height: 1.1; color: #111; margin: 15px 0; }
+.blue-gradient { background: linear-gradient(135deg, #ff9a76, #ff7e9a, #7e9aff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.sub-desc { color: #555; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; }
+
+/* Services Grid */
+.services-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.s-item { display: flex; gap: 15px; }
+.s-icon { font-size: 1.3rem; color: #ff7e9a; margin-top: 5px; }
+.s-item h4 { font-size: 1rem; margin: 0; color: #111; font-weight: 700; }
+.s-item p { font-size: 0.85rem; color: #666; margin: 4px 0 0 0; line-height: 1.4; }
+
+/* CTA Area */
+.cta-group { display: flex; align-items: center; gap: 30px; }
+.cta-button {
+  padding: 16px 45px;
+  background: linear-gradient(135deg, #ff9a76, #ff7e9a);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(255, 126, 154, 0.3);
+  transition: 0.3s;
+}
+.cta-button:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(255, 126, 154, 0.4); }
+.cta-link { font-weight: 700; border-bottom: 2px solid #7e9aff; cursor: pointer; }
+
+/* --- Responsive --- */
+@media (max-width: 1100px) {
+  .web-agency-container { flex-direction: column; text-align: center; }
+  .web-agency-laptop-box { order: 1; width: 100%; }
+  .web-agency-content { order: 2; width: 100%; }
+  .s-item { text-align: left; }
+  .cta-group { justify-content: center; }
+  .tech-pills-floating { display: none; }
+}
+
+@media (max-width: 600px) {
+  .services-mini-grid { grid-template-columns: 1fr; }
+  .display-title { font-size: 1.8rem; }
+}
+/* --- Services Cards Section --- */
+.services-cards-section {
+  padding: 100px 5%;
+  background: #f8fafc;
+}
+
+.cards-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.service-card-item {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card-item:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+  border-color: #7e9aff;
+}
+
+.card-icon-circle {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #f0f4ff, #e0e7ff);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #7e9aff;
+  margin-bottom: 25px;
+}
+
+.service-card-item h3 {
+  font-size: 1.4rem;
+  color: #1e293b;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.service-card-item p {
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+.card-footer-link {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #7e9aff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* --- Tech Process / Workflow Section --- */
+.tech-process-section {
+  padding: 100px 5%;
+  background: #ffffff;
+  text-align: center;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.process-flow-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+  position: relative;
+}
+
+.process-step {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.step-number {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #f1f5f9;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  user-select: none;
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 20px;
+  font-size: 1.5rem;
+  color: #ff7e9a;
+}
+
+.process-step h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+
+.process-step p {
+  font-size: 0.9rem;
+  color: #64748b;
+  padding: 0 10px;
+}
+
+/* Horizontal Connector Line */
+.step-connector {
+  position: absolute;
+  top: 25px;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    #e2e8f0,
+    #e2e8f0 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  z-index: -1;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 968px) {
+  .process-flow-container {
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .step-connector {
+    display: none;
+  }
+  
+  .process-step {
+    max-width: 300px;
+  }
+}
+/* --- CTA Banner Section (The Design from the Image) --- */
+.cta-banner-section {
+  padding: 80px 5%;
+  background: #ffffff; /* Matches your global background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-banner-card {
+  width: 100%;
+  max-width: 1200px;
+  /* Using your palette: Peach (#ff9a76), Pink (#ff7e9a), and Soft Blue (#7e9aff) */
+  background: linear-gradient(110deg, #ffb397 0%, #c7a4ff 50%, #8da2fb 100%);
+  padding: 60px 40px;
+  border-radius: 40px; /* Modern extra-rounded corners */
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(126, 154, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sub-label pill */
+.cta-banner-card .label-pill {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 25px;
+}
+
+.cta-banner-card h2 {
+  color: #ffffff;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.cta-banner-card p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  max-width: 850px;
+  margin: 0 auto 35px auto;
+  line-height: 1.6;
+}
+
+/* Button inside the banner */
+.cta-banner-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background: linear-gradient(135deg, #f19a83, #8299f8);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cta-banner-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  filter: brightness(1.05);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .cta-banner-card {
+    padding: 40px 20px;
+    border-radius: 25px;
+  }
+  .cta-banner-card h2 {
+    font-size: 1.8rem;
+  }
+}
+/* --- Updated Service Card Hover State --- */
+
+.service-card-item:hover {
+  transform: translateY(-12px);
+  /* The gradient you requested */
+  background: linear-gradient(110deg, #ffb397 0%, #c7a4ff 50%, #8da2fb 100%);
+  border-color: transparent;
+  box-shadow: 0 25px 50px -12px rgba(141, 162, 251, 0.4);
+}
+
+/* Change text and icon colors to white on hover so they are readable */
+.service-card-item:hover h3,
+.service-card-item:hover p,
+.service-card-item:hover .card-footer-link,
+.service-card-item:hover .card-icon-circle {
+  color: #ffffff;
+}
+
+/* Make the icon circle semi-transparent white on hover */
+.service-card-item:hover .card-icon-circle {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+/* Make the footer link arrow/text white */
+.service-card-item:hover .card-footer-link {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+/* Ensure smooth transition for all elements */
+.service-card-item, 
+.service-card-item h3, 
+.service-card-item p, 
+.card-icon-circle,
+.card-footer-link {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

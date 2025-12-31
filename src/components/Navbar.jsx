@@ -164,9 +164,9 @@ const Navbar = () => {
                             </svg>
                         </a>
                         <div className="dropdown-menu">
-                            <Link to="/softwares" className="dropdown-item">Web & SaaS Development</Link>
+                            <Link to="/Webdevelopment" className="dropdown-item">Website  Development</Link>
                             <Link to="/softwares" className="dropdown-item">Mobile Development</Link>
-                            <Link to="/softwares" className="dropdown-item">AI Solutions</Link>
+                            
                             <Link to="/interior" className="dropdown-item">Interior Design</Link>
                         </div>
                     </div>
@@ -222,9 +222,9 @@ const Navbar = () => {
                     <div className="sidebar-dropdown">
                         <div className="sidebar-dropdown-label">Services</div>
                         <div className="sidebar-dropdown-content">
-                            <Link to="/softwares" className="sidebar-sublink" onClick={closeSidebar}>Web & SaaS Development</Link>
+                            <Link to="/softwares" className="sidebar-sublink" onClick={closeSidebar}>Website Development</Link>
                             <Link to="/softwares" className="sidebar-sublink" onClick={closeSidebar}>Mobile Development</Link>
-                            <Link to="/softwares" className="sidebar-sublink" onClick={closeSidebar}>AI Solutions</Link>
+                            
                             <Link to="/interior" className="sidebar-sublink" onClick={closeSidebar}>Interior Design</Link>
                         </div>
                     </div>
