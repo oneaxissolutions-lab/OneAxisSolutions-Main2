@@ -1,0 +1,669 @@
+/* src/css/AboutCleaning.css */
+
+/* ========== SUBPAGES (ABOUT / PRODUCTS) ========== */
+/* ==== BASE LAYOUT + WHITE BACKGROUND ==== */
+.about-cleaning {
+  position: relative;
+  min-height: 100vh;
+  background: #ffffff; /* pure white page bg */
+  overflow: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* sab content ko bg ke upar rakhne ke liye */
+.about-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* sections default */
+.about-cleaning .about-section,
+.about-cleaning .subpage-topbar {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==== LIQUIDETHER BACKGROUND ==== */
+.about-liquid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none; /* click sirf content pe */
+  background: transparent;
+}
+
+/* container for LiquidEther – full viewport */
+.about-liquid-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* just in case LiquidEther ka canvas koi color de, usko transparent enforce karne ki try */
+.about-liquid-inner canvas {
+  background: transparent !important;
+}
+
+/* Back button basic look (agar pehle se style nahi hai) */
+.subpage-topbar {
+  padding: 6rem 6vw 1rem;
+}
+
+.back-home-btn {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #111827;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Products pill button (bottom) */
+.products-pill-btn {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  border-radius: 999px;
+  border: none;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: linear-gradient(135deg, #ff9a76, #ff7e9a, #7e9aff);
+  color: #ffffff;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.25);
+}
+
+.cleaning-subpage {
+  min-height: calc(100vh - 80px);
+  padding: 6.5rem 6vw 4rem;
+  background: #ffffff;
+}
+
+/* top bar with back button */
+.subpage-topbar {
+  max-width: 1120px;
+  margin: 0 auto 1.2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.3rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  color: #0f172a;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+  transition: all 0.18s ease;
+}
+
+.back-home-btn:hover {
+  border-color: transparent;
+  background: var(--brand-gradient);
+  color: #ffffff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+}
+
+/* generic about section wrapper */
+.about-section {
+  max-width: 1120px;
+  margin: 0 auto 3.2rem;
+}
+
+/* section headings */
+.about-section-head {
+  margin-bottom: 1.5rem;
+}
+
+.about-section-head.center {
+  text-align: center;
+}
+
+.about-section-head h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.about-section-head p {
+  margin-top: 0.6rem;
+  color: #6b7280;
+  font-size: 0.94rem;
+}
+
+/* two column layout */
+.about-two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.about-two-col.reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+}
+
+/* hero style heading */
+.about-hero-section h1 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.9rem;
+}
+
+.about-hero-section p {
+  color: #4b5563;
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+/* text column */
+.about-col-text p + p {
+  margin-top: 0.7rem;
+}
+
+/* small pill/tag */
+.about-tag {
+  display: inline-block;
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #6b7280;
+  margin-bottom: 0.8rem;
+}
+
+/* highlight box */
+.about-highlight-box {
+  margin-top: 1.2rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 1.2rem;
+  background: #f9fafb;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.06);
+}
+
+.about-highlight-box h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #111827;
+}
+
+.about-highlight-box p {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* image column */
+.about-col-image {
+  display: flex;
+  justify-content: center;
+}
+
+.about-img-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 1.8rem;
+  padding: 0.9rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+  overflow: hidden;
+}
+
+.about-img-card.slim {
+  max-width: 460px;
+}
+
+.about-img-card.soft {
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+.about-img-main {
+  width: 100%;
+  border-radius: 1.4rem;
+  display: block;
+  object-fit: cover;
+}
+
+/* glow behind image */
+.about-img-glow {
+  position: absolute;
+  inset: 20%;
+  background: radial-gradient(circle at 20% 0%, #ff9a76 0%, transparent 55%),
+    radial-gradient(circle at 80% 100%, #7e9aff 0%, transparent 55%);
+  opacity: 0.35;
+  filter: blur(12px);
+  z-index: -1;
+}
+
+/* chip on image */
+.about-img-chip {
+  position: absolute;
+  left: 1.4rem;
+  bottom: 1.4rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 0.8rem;
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.25);
+  color: #111827;
+}
+
+.about-img-chip span {
+  display: block;
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+.about-img-chip.bottom-right {
+  left: auto;
+  right: 1.4rem;
+}
+
+/* JOURNEY TIMELINE */
+.journey-timeline {
+  position: relative;
+  padding-left: 1.4rem;
+  border-left: 2px solid rgba(148, 163, 184, 0.6);
+  display: grid;
+  gap: 1.3rem;
+}
+
+.journey-timeline.big {
+  gap: 1.6rem;
+}
+
+.journey-item {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.journey-item::before {
+  content: "";
+  position: absolute;
+  left: -1.6rem;
+  top: 0.4rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--brand-gradient);
+  box-shadow: 0 0 0 5px rgba(252, 165, 165, 0.28);
+}
+
+.journey-year {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.journey-item h3 {
+  margin-top: 0.3rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.journey-item p {
+  margin-top: 0.35rem;
+  color: #4b5563;
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+/* MISSION & VISION */
+.mission-vision-section {
+  margin-top: 3rem;
+}
+
+.mission-vision-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+  gap: 2.3rem;
+  align-items: center;
+}
+
+.mission-vision-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+.mv-card {
+  background: #f9fafb;
+  border-radius: 1.4rem;
+  padding: 1.5rem 1.6rem;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.06);
+}
+
+.mv-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.mv-card p {
+  font-size: 0.94rem;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.mission-vision-image {
+  display: flex;
+  justify-content: center;
+}
+
+/* TEAM GRID */
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+.team-card {
+  background: #ffffff;
+  border-radius: 1.4rem;
+  padding: 1.4rem 1.5rem;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+}
+
+.team-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--brand-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.team-card h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.team-card p {
+  font-size: 0.92rem;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+/* CORE VALUES */
+.values-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr);
+  gap: 2.2rem;
+  align-items: center;
+}
+
+.values-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.value-pill {
+  border-radius: 999px;
+  padding: 0.55rem 1.3rem;
+  background: #f9fafb;
+  border: 1px solid rgba(209, 213, 219, 0.9);
+  font-size: 0.82rem;
+  color: #4b5563;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+/* cute values badge */
+.values-illustration {
+  display: flex;
+  justify-content: center;
+}
+
+.values-badge {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 0%, #ff9a76 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, #7e9aff 0%, transparent 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 22px 50px rgba(15, 23, 42, 0.22);
+}
+
+.values-badge-ring {
+  position: absolute;
+  inset: 14px;
+  border-radius: 999px;
+  border: 2px dashed rgba(255, 255, 255, 0.7);
+}
+
+.values-badge-inner {
+  position: relative;
+  z-index: 1;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 999px;
+  padding: 1.3rem 1.45rem;
+  text-align: center;
+  color: #f9fafb;
+  font-size: 0.8rem;
+}
+
+.values-badge-inner span {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.65rem;
+  color: #e5e7eb;
+}
+
+.values-badge-inner strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 1.05rem;
+}
+
+.values-badge-inner p {
+  margin-top: 0.25rem;
+  font-size: 0.7rem;
+  color: #e5e7eb;
+}
+
+/* CERTIFICATIONS */
+.cert-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+.cert-card {
+  background: #ffffff;
+  border-radius: 1.4rem;
+  padding: 1.4rem 1.5rem;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+  border-top: 3px solid rgba(252, 165, 165, 0.7);
+}
+
+.cert-card h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.cert-card p {
+  font-size: 0.92rem;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+/* little badge strip */
+.cert-badges-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.cert-badge-pill {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: #f9fafb;
+  border: 1px solid rgba(209, 213, 219, 0.9);
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+/* responsive tweaks */
+@media (max-width: 1024px) {
+  .about-two-col,
+  .about-two-col.reverse,
+  .mission-vision-layout,
+  .values-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .about-col-image {
+    order: 2;
+  }
+
+  .about-two-col.reverse .about-col-image {
+    order: 1;
+  }
+
+  .mission-vision-image,
+  .values-illustration {
+    margin-top: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cleaning-subpage {
+    padding: 6rem 5vw 3.5rem;
+  }
+
+  .about-section {
+    margin-bottom: 2.4rem;
+  }
+
+  .journey-timeline {
+    padding-left: 1rem;
+  }
+
+  .journey-item {
+    padding-left: 0.9rem;
+  }
+}
+
+/* BRAND GRADIENT VARIABLE */
+:root {
+  --brand-gradient: linear-gradient(
+    135deg,
+    #ff9a76 0%,
+    #ff7e9a 50%,
+    #7e9aff 100%
+  );
+}
+
+/* Gradient text highlights */
+.brand-gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ABOUT TAG COLOR TWEAK */
+.about-cleaning .about-tag {
+  border-color: #ff7e9a;
+  color: #ff7e9a;
+}
+
+/* Image chip accent border */
+.about-cleaning .about-img-chip {
+  border-left: 3px solid #ff7e9a;
+}
+
+/* Journey dot color */
+.about-cleaning .journey-item::before {
+  background: var(--brand-gradient);
+}
+
+/* Team avatar gradient */
+.about-cleaning .team-avatar {
+  background: var(--brand-gradient);
+}
+
+/* Core values hover subtle color */
+.about-cleaning .value-pill:hover {
+  border-color: #ff7e9a;
+  background: rgba(255, 126, 154, 0.08);
+}
+
+/* Bottom CTA block (sirf colors) */
+.about-cleaning .about-bottom-inner {
+  background: radial-gradient(circle at top left, #ff9a76 0%, transparent 55%),
+    radial-gradient(circle at bottom right, #7e9aff 0%, transparent 55%),
+    #0f172a;
+  color: #e5e7eb;
+}
+
+/* Bottom Products button – gradient fill (old class still kept, but not used now) */
+.about-cleaning .about-products-btn {
+  background: var(--brand-gradient);
+  color: #ffffff;
+}
+
+/* ✅ PRODUCTS PILL BUTTON (as per image) */
+.products-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.65rem 2.2rem;
+  border-radius: 999px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+
+  background: #ffffff;
+  color: #ff7e9a;
+
+  border: 2px solid transparent;
+  background-image: linear-gradient(#ffffff, #ffffff), var(--brand-gradient);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  text-decoration: none;
+
+  box-shadow: 0 10px 28px rgba(255, 126, 154, 0.25);
+  transition: all 0.25s ease;
+}
+
+.products-pill-btn:hover {
+  background-image: var(--brand-gradient);
+  color: #ffffff;
+  box-shadow: 0 16px 40px rgba(255, 126, 154, 0.45);
+  transform: translateY(-2px);
+}
