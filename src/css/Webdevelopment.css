@@ -517,8 +517,8 @@ body[data-cta="on"] .fly-card {
 @media (max-width: 768px) {
   .webdev-section {
     padding: 2.4rem 1.8rem;
-    /* mobile pe solid background so text clear */
-    background: rgba(255, 255, 255, 0.95);
+    /* mobile pe thoda transparent, par text clear */
+    background: rgba(255, 255, 255, 0.9);
   }
 
   .hero-card {
@@ -537,23 +537,23 @@ body[data-cta="on"] .fly-card {
   .fly-card.ui    { top: 72%; left: 8%;  }
   .fly-card.seo   { top: 82%; left: 12%; }
 
-  /* mobile cards more solid */
+  /* mobile cards – halka glass effect but readable */
   .card {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.96);
   }
 
   .stack-card {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.96);
   }
 
   /* MOBILE OVERLAY – chhota + laptop ke upar set */
   .laptop-screen-overlay {
     left: 50%;
     right: auto;
-    top: 36vh;        /* yahan se upar-neeche thoda adjust kar sakti ho */
-    width: 230px;
-    max-width: 85vw;
-    height: 130px;
+    top: 38vh;        /* 36 se 38 kiya – thoda niche aayega */
+    width: 220px;
+    max-width: 82vw;
+    height: 120px;
 
     transform:
       translate(-50%, -50%)
