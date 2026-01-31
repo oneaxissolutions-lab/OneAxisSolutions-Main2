@@ -8,19 +8,18 @@ import ScheduleModal from "../components/ScheduleModal";
 import Web from "../components/Web";
 
 const Webdevelopment = () => {
-  // ✅ STATES (component ke andar)
   const [isScheduleOpen, setIsScheduleOpen] = useState(false);
-  const [isWebOpen, setIsWebOpen] = useState(false); // ✅ Web.jsx modal state
+  const [isWebOpen, setIsWebOpen] = useState(false);
 
   const canvasRef = useRef(null);
   const groupRef = useRef(null);
 
   const mouse = useRef({ x: 0, y: 0 });
   const scrollY = useRef(0);
-  const finalProgress = useRef(0); // 0 → 1
-  const finalTriggerRef = useRef(null); // flying cards section ka trigger
-  const finalCtaRef = useRef(null); // final CTA ("Book a Strategy Call") section
-  const ctaEnteredRef = useRef(false); // CTA ke baad model hide karne ke liye
+  const finalProgress = useRef(0); // flying cards trigger progress (0 → 1)
+  const finalTriggerRef = useRef(null);
+  const finalCtaRef = useRef(null);
+  const ctaEnteredRef = useRef(false);
 
   const strongEase = [0.22, 1, 0.36, 1];
 
@@ -114,7 +113,7 @@ const Webdevelopment = () => {
     dirLight.position.set(6, 6, 8);
     scene.add(dirLight);
 
-    // ✅ Base position tuned for overlay
+    // ✅ Base position: overlay ke hisaab se tune
     const base = isSmallScreen ? { x: 0.2, y: -0.05 } : { x: 1.4, y: 0 };
 
     const group = new THREE.Group();
@@ -122,7 +121,8 @@ const Webdevelopment = () => {
     groupRef.current = group;
 
     group.position.set(base.x, base.y, 0);
-    group.rotation.y = -0.35;
+    // Base tilt (overlay rotateY(-15deg) ke roughly close)
+    group.rotation.set(0, -0.35, 0);
 
     const loader = new GLTFLoader();
     loader.load(
@@ -142,6 +142,7 @@ const Webdevelopment = () => {
       }
     );
 
+    // Mouse listener rakha hai but ab parallax use nahi kar rahe
     const onMouseMove = (e) => {
       const rect = container.getBoundingClientRect();
       mouse.current.x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
@@ -172,28 +173,23 @@ const Webdevelopment = () => {
 
         finalProgress.current = clamped;
 
-        let showCards = clamped > 0.3;
-        let ctaEntered = false;
-
-        if (cta) {
-          const ctaRect = cta.getBoundingClientRect();
-          const vh2 = window.innerHeight;
-          ctaEntered = ctaRect.top <= vh2 * 0.7;
-          if (ctaEntered) {
-            showCards = false;
-          }
-        }
-
-        ctaEnteredRef.current = ctaEntered;
-
-        // flying cards ke liye data-final
-        if (showCards) {
+        // flying cards ke liye body data-final
+        if (clamped > 0.3) {
           document.body.setAttribute("data-final", "on");
         } else {
           document.body.removeAttribute("data-final");
         }
 
-        // ✅ CTA / footer ke baad overlay + model hide
+        // CTA detect
+        let ctaEntered = false;
+        if (cta) {
+          const ctaRect = cta.getBoundingClientRect();
+          const vh2 = window.innerHeight;
+          ctaEntered = ctaRect.top <= vh2 * 0.7;
+        }
+
+        ctaEnteredRef.current = ctaEntered;
+
         if (ctaEntered) {
           document.body.setAttribute("data-cta", "on");
         } else {
@@ -218,64 +214,46 @@ const Webdevelopment = () => {
     const animate = () => {
       const g = groupRef.current;
       if (g) {
-        // ✅ CTA ke baad model bilkul hide (Three.js side se)
-        if (ctaEnteredRef.current) {
-          g.visible = false;
-          renderer.render(scene, camera);
-          requestAnimationFrame(animate);
-          return;
-        } else {
-          g.visible = true;
-        }
-
-        const mouseX = mouse.current.x;
-        const mouseY = mouse.current.y;
-
-        // 🔥 Mouse effect thoda soft rakha hai
-        const mouseOffsetX = mouseX * 0.3;
-        const mouseOffsetY = -mouseY * 0.4;
-
-        // ❌ Scroll offset hata diya – taaki laptop same height ke aas-paas rahe
-        const softScrollOffset = 0;
+        const isSmall = isSmallScreen;
+        const baseZ = isSmall ? 12 : 11;
         const finalT = finalProgress.current;
 
-        // Desktop pe laptop ko thoda center ke paas rakha gaya
-        const centerX = isSmallScreen ? 0.2 : 0.4;
-        const slideX = finalT * (centerX - base.x);
-
-        let targetX;
-        if (finalT > 0) {
-          // Jab flying-cards section start, laptop thoda center ki taraf glide
-          targetX = base.x + slideX;
+        // ✅ CTA ke baad model bilkul hide
+        if (ctaEnteredRef.current) {
+          g.visible = false;
+          camera.position.z += (baseZ - camera.position.z) * 0.15;
         } else {
-          // Normal state: overlay se almost lock feel
-          targetX = base.x + mouseOffsetX;
-        }
+          g.visible = true;
 
-        const targetY = base.y + mouseOffsetY - softScrollOffset;
+          // ✅ 1) POSITION FIXED: koi mouse ya scroll offset nahi
+          const targetX = base.x;
+          const targetY = base.y;
 
-        g.position.x += (targetX - g.position.x) * 0.12;
-        g.position.y += (targetY - g.position.y) * 0.12;
+          g.position.x += (targetX - g.position.x) * 0.12;
+          g.position.y += (targetY - g.position.y) * 0.12;
 
-        if (finalT > 0) {
-          g.rotation.x = finalT * Math.PI * 0.35;
-          g.rotation.y = -0.35 + finalT * (0 - -0.35);
-          g.rotation.z = finalT * Math.PI * 0.06;
+          // ✅ 2) ROTATION FIXED: sirf base tilt
+          const targetRotX = 0;
+          const targetRotY = -0.35;
+          const targetRotZ = 0;
 
-          const zoomScale = 1 + finalT * 0.45;
-          g.scale.set(zoomScale, zoomScale, zoomScale);
+          g.rotation.x += (targetRotX - g.rotation.x) * 0.12;
+          g.rotation.y += (targetRotY - g.rotation.y) * 0.12;
+          g.rotation.z += (targetRotZ - g.rotation.z) * 0.12;
 
-          camera.position.z = (isSmallScreen ? 12 : 11) - finalT * 3.5;
-        } else {
-          g.rotation.x += (0 - g.rotation.x) * 0.1;
-          g.rotation.z += (0 - g.rotation.z) * 0.1;
-          g.rotation.y += (-0.35 - g.rotation.y) * 0.1;
+          // ✅ 3) FLYING SECTION: sirf halka zoom (no extra tilt)
+          let targetScale = 1;
+          let targetCameraZ = baseZ;
 
-          const s = g.scale.x + (1 - g.scale.x) * 0.1;
+          if (finalT > 0) {
+            targetScale = 1 + finalT * 0.25; // light zoom
+            targetCameraZ = baseZ - finalT * 1.5; // thoda paas
+          }
+
+          const s = g.scale.x + (targetScale - g.scale.x) * 0.12;
           g.scale.set(s, s, s);
 
-          const baseZ = isSmallScreen ? 12 : 11;
-          camera.position.z += (baseZ - camera.position.z) * 0.1;
+          camera.position.z += (targetCameraZ - camera.position.z) * 0.12;
         }
       }
 
@@ -285,7 +263,7 @@ const Webdevelopment = () => {
 
     animate();
 
-    // ✅ CLEANUP – sirf listeners, renderer, attributes
+    // CLEANUP
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("scroll", onScroll);
@@ -389,7 +367,7 @@ if (client.readyFor3D) {
                 className="webdev-btn primary"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => setIsWebOpen(true)} // ✅ Web.jsx open
+                onClick={() => setIsWebOpen(true)}
               >
                 Get Started
               </motion.button>
@@ -599,7 +577,7 @@ if (client.readyFor3D) {
               className="cta-btn"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.96 }}
-              onClick={() => setIsScheduleOpen(true)} // ✅ MODAL OPEN
+              onClick={() => setIsScheduleOpen(true)}
             >
               Book a Strategy Call
             </motion.button>
@@ -607,13 +585,12 @@ if (client.readyFor3D) {
         </motion.section>
       </main>
 
-      {/* ✅ SCHEDULE MODAL YAHAN RENDER HOGA */}
+      {/* MODALS */}
       <ScheduleModal
         isOpen={isScheduleOpen}
         onClose={() => setIsScheduleOpen(false)}
       />
 
-      {/* ✅ WEB MODAL – same pattern */}
       <Web isOpen={isWebOpen} onClose={() => setIsWebOpen(false)} />
     </div>
   );

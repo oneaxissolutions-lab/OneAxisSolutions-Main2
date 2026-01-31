@@ -21,14 +21,13 @@
   z-index: 1;
   pointer-events: none;
 
-  /* ✅ smooth fade-out for model */
   opacity: 1;
   transition:
     opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ✅ CTA / footer ke baad 3D laptop model bhi hide */
+/* CTA / footer ke baad 3D laptop model hide */
 body[data-cta="on"] .webdev-3d {
   opacity: 0;
   transform: translateY(40px) scale(0.92);
@@ -58,7 +57,7 @@ body[data-cta="on"] .webdev-3d {
   max-width: 520px;
 }
 
-/* HERO GLASS – light with border */
+/* HERO GLASS CARD */
 .hero-card {
   padding: 3rem;
   border-radius: 4rem;
@@ -132,11 +131,11 @@ body[data-cta="on"] .webdev-3d {
   color: #111827;
 }
 
-/* ================= LAPTOP SCREEN OVERLAY – DESKTOP BASE ================= */
+/* ================= LAPTOP SCREEN OVERLAY ================= */
 .laptop-screen-overlay {
   position: fixed;
 
-  /* 📍 Desktop ki main position */
+  /* Desktop position */
   right: 21.9vw;
   top: 45vh;
 
@@ -147,7 +146,7 @@ body[data-cta="on"] .webdev-3d {
   transform:
     translateY(-54%)
     perspective(1200px)
-    rotateY(-15deg); /* angle sab jagah same */
+    rotateY(-15deg);
 
   transform-origin: center center;
 
@@ -161,15 +160,13 @@ body[data-cta="on"] .webdev-3d {
     0 24px 60px rgba(15, 23, 42, 0.6),
     inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 
-  /* ✅ smooth hide/show for CTA */
   opacity: 1;
   transition:
     opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ❌ Yahan se data-final hata diya
-   ✅ Ab overlay sirf CTA pe hide hogi, flying cards me visible rahegi */
+/* CTA / footer me overlay hide */
 body[data-cta="on"] .laptop-screen-overlay {
   opacity: 0;
   transform:
@@ -180,7 +177,6 @@ body[data-cta="on"] .laptop-screen-overlay {
     scale(0.9);
 }
 
-/* bezel ke andar gap */
 .screen-content {
   height: 100%;
   padding: 10px 10px;
@@ -189,7 +185,6 @@ body[data-cta="on"] .laptop-screen-overlay {
   background: #020617;
 }
 
-/* scrolling code */
 .screen-content pre {
   margin: 0;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
@@ -391,7 +386,6 @@ body[data-final="on"] .fly-card {
   height: 140vh;
 }
 
-/* flying section spacer */
 .flying-showcase {
   background: transparent !important;
   backdrop-filter: none !important;
@@ -534,13 +528,19 @@ body[data-final="on"] .fly-card {
   .fly-card.ui    { top: 72%; left: 8%;  }
   .fly-card.seo   { top: 82%; left: 12%; }
 
+  /* ✅ MOBILE: overlay ko laptop ke upar center karo */
   .laptop-screen-overlay {
-    left: auto;
-    right: 8vw;
-    top: 38vh;
-    width: 200px;
-    max-width: 72vw;
-    height: 120px;
+    left: 50%;
+    right: auto;
+    top: 30vh;
+    width: 260px;
+    max-width: 88vw;
+    height: 150px;
+
+    transform:
+      translate(-50%, -50%)
+      perspective(1000px)
+      rotateY(-10deg);
   }
 
   .screen-content {
