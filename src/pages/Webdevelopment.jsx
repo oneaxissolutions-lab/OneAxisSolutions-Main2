@@ -114,6 +114,7 @@ const Webdevelopment = () => {
     dirLight.position.set(6, 6, 8);
     scene.add(dirLight);
 
+    // ✅ Base position tuned for overlay
     const base = isSmallScreen ? { x: 0.2, y: -0.05 } : { x: 1.4, y: 0 };
 
     const group = new THREE.Group();
@@ -230,19 +231,24 @@ const Webdevelopment = () => {
         const mouseX = mouse.current.x;
         const mouseY = mouse.current.y;
 
-        const mouseOffsetX = mouseX * 0.7;
-        const mouseOffsetY = -mouseY * 0.9;
+        // 🔥 Mouse effect thoda soft rakha hai
+        const mouseOffsetX = mouseX * 0.3;
+        const mouseOffsetY = -mouseY * 0.4;
 
-        const softScrollOffset = scrollY.current * 0.0005;
+        // ❌ Scroll offset hata diya – taaki laptop same height ke aas-paas rahe
+        const softScrollOffset = 0;
         const finalT = finalProgress.current;
 
-        const centerX = isSmallScreen ? 0 : 0.2;
+        // Desktop pe laptop ko thoda center ke paas rakha gaya
+        const centerX = isSmallScreen ? 0.2 : 0.4;
         const slideX = finalT * (centerX - base.x);
 
         let targetX;
         if (finalT > 0) {
+          // Jab flying-cards section start, laptop thoda center ki taraf glide
           targetX = base.x + slideX;
         } else {
+          // Normal state: overlay se almost lock feel
           targetX = base.x + mouseOffsetX;
         }
 
@@ -305,7 +311,7 @@ const Webdevelopment = () => {
         <div className="screen-content">
           <div className="screen-panel">
             <pre>
-              {`// OneAxis Solutions · Web Experience
+{`// OneAxis Solutions · Web Experience
 const laptop = create3DLaptop();
 const hero   = createGlassHero();
 
@@ -608,10 +614,7 @@ if (client.readyFor3D) {
       />
 
       {/* ✅ WEB MODAL – same pattern */}
-      <Web
-        isOpen={isWebOpen}
-        onClose={() => setIsWebOpen(false)}
-      />
+      <Web isOpen={isWebOpen} onClose={() => setIsWebOpen(false)} />
     </div>
   );
 };

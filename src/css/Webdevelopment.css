@@ -168,7 +168,8 @@ body[data-cta="on"] .webdev-3d {
     transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ✅ CTA / footer me overlay hide */
+/* ❌ Yahan se data-final hata diya
+   ✅ Ab overlay sirf CTA pe hide hogi, flying cards me visible rahegi */
 body[data-cta="on"] .laptop-screen-overlay {
   opacity: 0;
   transform:
