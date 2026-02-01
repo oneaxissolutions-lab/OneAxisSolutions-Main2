@@ -67,7 +67,7 @@ const Cleaning = () => {
     },
   ];
 
-  // ✅ Vite + public folder → direct root path
+  // 👇 Public folder wali file (https://oneaxissolutions.com/cleaning-products-3d-model.glb)
   const modelSrc = "/cleaning-products-3d-model.glb";
 
   return (
@@ -147,6 +147,7 @@ const Cleaning = () => {
               src={modelSrc}
               alt="Cleaning Products 3D Model"
               camera-controls
+              auto-rotate
               disable-zoom
               shadow-intensity="0.7"
               exposure="1.1"
@@ -426,7 +427,7 @@ const Cleaning = () => {
               <Link to="/about" className="faq-btn primary">
                 About Us
               </Link>
-                <Link to="/cleaning/products" className="faq-btn outline">
+              <Link to="/cleaning/products" className="faq-btn outline">
                 Products
               </Link>
             </div>
