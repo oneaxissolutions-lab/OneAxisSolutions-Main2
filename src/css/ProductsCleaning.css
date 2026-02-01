@@ -1,14 +1,17 @@
 :root {
   --brand-gradient: linear-gradient(135deg, #ff9a76, #ff7e9a, #7e9aff);
+  --brand-primary: #ff7e9a;
+  --brand-secondary: #7e9aff;
+  --brand-dark: #1f2937;
+  --brand-muted: #6b7280;
 }
 
 /* PAGE */
 .products-page {
   padding: 6rem 6vw 4rem;
-  background:
-    radial-gradient(circle at top left, #ffe4f1, transparent 55%),
-    radial-gradient(circle at bottom right, #e0ebff, transparent 55%),
+  background: radial-gradient(circle at bottom right, #fde7f3, transparent 55%),
     #f9fafb;
+  min-height: 100vh;
 }
 
 /* HERO */
@@ -26,11 +29,36 @@
   color: transparent;
 }
 
-.products-hero p {
-  margin-top: 0.6rem;
-  color: #4b5563;
+/* Manufacturer / Wholesale headline */
+.manufacturer-heading {
+  margin-top: 0.8rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--brand-secondary);
 }
 
+.products-hero p {
+  margin-top: 0.6rem;
+  color: var(--brand-muted);
+}
+
+/* Bulk packaging line under hero */
+.bulk-packaging-heading {
+  margin: 1rem auto 0;
+  padding: 0.6rem 1.2rem;
+  background: #ffffff;
+  border-left: 4px solid var(--brand-primary);
+  display: inline-block;
+  font-weight: 600;
+  color: var(--brand-dark);
+  font-size: 0.9rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(236, 72, 153, 0.18);
+}
+
+/* SEARCH */
 .products-search {
   margin-top: 1.5rem;
 }
@@ -42,7 +70,7 @@
   border-radius: 999px;
   border: none;
   outline: none;
-  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.35);
   font-size: 0.95rem;
 }
 
@@ -60,7 +88,7 @@
   box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .product-card:hover {
@@ -73,7 +101,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f9fafb;
+  background: #fdf2f8;
 }
 
 .product-img img {
@@ -89,25 +117,41 @@
 .product-body h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--brand-dark);
 }
 
 .product-body p {
   margin-top: 0.4rem;
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--brand-muted);
 }
 
+/* Card specs */
+.product-specs {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.75rem;
+}
+
+.product-specs span:first-child {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--brand-dark);
+}
+
+.product-specs span:last-child {
+  font-weight: 600;
+  color: var(--brand-primary);
+}
+
+/* footer */
 .product-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 1rem;
-}
-
-.product-footer span {
-  font-weight: 700;
-  color: #111827;
 }
 
 .product-footer button {
@@ -115,24 +159,23 @@
   border: none;
   color: #ffffff;
   border-radius: 999px;
-  padding: 0.4rem 1.2rem;
+  padding: 0.45rem 1.3rem;
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
 }
 
-/* ========== MODAL ========== */
+/* MODAL */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(15, 23, 42, 0.55);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
 }
 
-/* popup ab chhota + max-height */
 .modal-box {
   background: #ffffff;
   padding: 1.6rem 1.8rem 1.8rem;
@@ -140,11 +183,10 @@
   width: min(640px, 90%);
   max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+  box-shadow: 0 25px 70px rgba(236, 72, 153, 0.35);
   position: relative;
 }
 
-/* close button */
 .modal-box .close {
   position: absolute;
   top: 0.9rem;
@@ -156,12 +198,13 @@
   cursor: pointer;
 }
 
-.modal-title {
+.modal-box h2 {
   font-size: 1.4rem;
   font-weight: 700;
-  margin-right: 2rem;
+  color: var(--brand-dark);
 }
 
+/* Modal content layout */
 .modal-content {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -170,7 +213,6 @@
   align-items: flex-start;
 }
 
-/* image ka size control */
 .modal-content img {
   width: 100%;
   max-height: 340px;
@@ -185,68 +227,69 @@
   flex-direction: column;
   gap: 0.6rem;
   font-size: 0.95rem;
-  color: #4b5563;
+  color: var(--brand-muted);
 }
 
-.modal-price {
-  margin-top: 0.2rem;
-  font-size: 1.1rem;
-  color: #111827;
+/* Phenyl flavours */
+.product-flavours {
+  margin-top: 0.4rem;
 }
 
+.product-flavours strong {
+  font-size: 0.9rem;
+  color: var(--brand-dark);
+}
+
+.product-flavours ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+.product-flavours li {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* inline bulk info inside modal */
+.bulk-packaging-inline {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brand-primary);
+}
+
+/* Modal actions */
 .modal-actions {
   margin-top: 0.8rem;
 }
 
-.modal-actions button {
-  margin-right: 0.8rem;
-}
-
-/* buttons */
-.primary {
-  background: var(--brand-gradient);
-  color: #ffffff;
-  border: none;
-  padding: 0.6rem 1.6rem;
-  border-radius: 999px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
+/* Buttons */
 .outline {
   background: #ffffff;
-  border: 2px solid #ff7e9a;
-  color: #ff7e9a;
+  border: 2px solid var(--brand-primary);
+  color: var(--brand-primary);
   padding: 0.6rem 1.6rem;
   border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
 }
 
-/* ========== SCROLL ANIMATIONS ========== */
+/* SCROLL ANIMATIONS – only fade (no slide) */
 .scroll-reveal {
   opacity: 0;
-  transition: 0.6s ease;
-}
-
-.from-left {
-  transform: translateX(-60px);
-}
-
-.from-right {
-  transform: translateX(60px);
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .from-top {
-  transform: translateY(-40px);
+  transform: translateY(-20px);
 }
 
 .scroll-reveal.show {
   opacity: 1;
-  transform: translateX(0) translateY(0);
+  transform: translateY(0);
 }
 
-/* ========== RESPONSIVE ========== */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .products-page {
     padding: 5.5rem 5vw 3.5rem;
@@ -270,4 +313,35 @@
   .modal-content img {
     max-height: 260px;
   }
+
+  .bulk-packaging-heading {
+    display: block;
+    max-width: 90%;
+  }
+}
+/* Key Specs list in modal */
+.product-specs-list {
+  margin-top: 0.4rem;
+  padding: 0.7rem 0.9rem;
+  background: #f9fafb;
+  border-radius: 0.9rem;
+  border: 1px solid #e5e7eb;
+}
+
+.product-specs-list strong {
+  font-size: 0.9rem;
+  color: var(--brand-dark);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.product-specs-list ul {
+  margin: 0.2rem 0 0;
+  padding-left: 18px;
+}
+
+.product-specs-list li {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--brand-muted);
 }

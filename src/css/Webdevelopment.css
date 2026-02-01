@@ -488,7 +488,7 @@ body[data-cta="on"] .fly-card {
   }
   100% {
     box-shadow: 0 18px 40px rgba(126, 154, 255, 0.4);
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(243, 241, 241, 0.99);
   }
 }
 
@@ -548,12 +548,12 @@ body[data-cta="on"] .fly-card {
 
   /* MOBILE OVERLAY – chhota + laptop ke upar set */
   .laptop-screen-overlay {
-    left: 50%;
-    right: auto;
-    top: 38vh;        /* 36 se 38 kiya – thoda niche aayega */
-    width: 220px;
+    left: 62%;
+    right: 40vh;
+    top: 37vh;        /* 36 se 38 kiya – thoda niche aayega */
+    width: 198px;
     max-width: 82vw;
-    height: 120px;
+    height: 100px;
 
     transform:
       translate(-50%, -50%)

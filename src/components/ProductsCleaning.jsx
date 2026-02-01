@@ -3,129 +3,233 @@ import "../css/ProductsCleaning.css";
 
 /* IMAGES */
 import paperImg from "../assets/paper.jpg";
-import phenylImg from "../assets/phenyl.png";
-import mothballsImg from "../assets/mothballs.jpg";
-import glassImg from "../assets/glass.png";
-import floorImg from "../assets/floor.png";
-import toiletCleanerImg from "../assets/toiletcleaner.png";
-import dishwashImg from "../assets/dishwash.png";
-import handwashImg from "../assets/handwash.jpg";
+import phenylImg from "../assets/phenyl.jpeg";
+import glassImg from "../assets/glass.jpeg";
+import toiletCleanerImg from "../assets/toiletcleaner.jpeg";
+import dishwashImg from "../assets/dishwash.jpeg";
+import handwashImg from "../assets/handwash.jpeg";
 import detergentPowderImg from "../assets/detergent.png";
-import detergentLiquidImg from "../assets/liquid.png";
-import bleachingImg from "../assets/bleaching.png";
-import airFreshnerImg from "../assets/freshner.png";
-import roomFreshnerImg from "../assets/roomfreshner.png";
-import scrubImg from "../assets/scrub.png";
 import garbageBagImg from "../assets/dust.png";
+import scrubImg from "../assets/scrub.png";
+import mothballsImg from "../assets/mothballs.jpeg";
+import blackphenyl from "../assets/blackphenyl.jpeg";
+import floor from "../assets/floor.jpeg";
+import wiper from "../assets/wiper.png";
+import dustbin from "../assets/dustbin.png";
+import mographenyl from "../assets/mographenyl.jpeg";
+import rosephenyl from "../assets/rosephenyl.jpeg";
+import lemonphenyl from "../assets/lemonphenyl.jpeg";
+import lemonhandwash from "../assets/lemonhandwash.jpeg";
 
 /* PRODUCTS DATA */
 const PRODUCTS = [
+  // 🔹 Phenyl range – alag-alag cards
   {
     id: 1,
-    name: "Toilet Paper",
-    price: "₹120",
-    image: paperImg,
-    description:
-      "Soft, strong and absorbent toilet paper for daily hygiene.",
+    name: "White Floor Phenyl",
+    image: phenylImg,
+    description: "High-quality white floor disinfectant phenyl for daily mopping.",
+    specs: [
+      "High active content for effective disinfection",
+      "Recommended dilution: 1:20 with water",
+      "Suitable for corridors, lobbies & washrooms",
+      "Available in 5L & 50L bulk packs",
+    ],
   },
   {
     id: 2,
-    name: "Phenyl",
-    price: "₹85",
-    image: phenylImg,
-    description:
-      "Antibacterial floor cleaner with long-lasting fragrance.",
+    name: "Rose Phenyl",
+    image: rosephenyl,
+    description: "Perfumed rose phenyl for hygienic and fragrant floors.",
+    specs: [
+      "Premium rose fragrance for pleasant ambience",
+      "Effective against germs & odour",
+      "Ideal for offices, hotels & showrooms",
+      "Available in 5L & 50L bulk packs",
+    ],
   },
   {
     id: 3,
-    name: "Naphthalene Balls",
-    price: "₹45",
-    image: mothballsImg,
-    description: "Pest control solution for wardrobes and storage.",
+    name: "Mogra Phenyl",
+    image: mographenyl,
+    description: "Mogra scented phenyl for long-lasting freshness & disinfection.",
+    specs: [
+      "Refreshing mogra fragrance",
+      "Cleans & deodorizes in one step",
+      "Suitable for reception areas & lobbies",
+      "Available in 5L & 50L bulk packs",
+    ],
   },
   {
     id: 4,
-    name: "Glass Cleaner",
-    price: "₹95",
-    image: glassImg,
-    description: "Streak-free cleaner for mirrors and glass surfaces.",
+    name: "Lemon Phenyl",
+    image: lemonphenyl,
+    description: "Lemon phenyl for fresh, hygienic and odour-free floors.",
+    specs: [
+      "Citrus lemon fragrance for fresh feel",
+      "Helps cut through greasy & soiled areas",
+      "Perfect for kitchens, corridors & wash areas",
+      "Available in 5L & 50L bulk packs",
+    ],
   },
+
+  // 🔹 Washroom & surface cleaners
   {
     id: 5,
-    name: "Floor Cleaner",
-    price: "₹110",
-    image: floorImg,
-    description: "Multi-surface cleaner with fresh aroma.",
+    name: "Toilet Cleaner",
+    image: toiletCleanerImg,
+    description: "Powerful toilet cleaner for stains and germs.",
+    specs: [
+      "Thick formula for better cling on vertical surfaces",
+      "Removes hard-water & lime scale stains",
+      "Safe for ceramic & porcelain toilet bowls",
+      "Ideal for washrooms in offices, hotels & institutions",
+    ],
   },
   {
     id: 6,
-    name: "Toilet Cleaner Liquid",
-    price: "₹75",
-    image: toiletCleanerImg,
-    description: "Removes tough stains and kills germs.",
+    name: "Glass & Surface Cleaner",
+    image: glassImg,
+    description: "Glass & surface cleaner for streak-free shine.",
+    specs: [
+      "Streak-free cleaning for glass & mirrors",
+      "Suitable for windows, tables & displays",
+      "Fast-drying, no residue",
+    ],
   },
+
+  // 🔹 Handwash – normal + lemon
   {
     id: 7,
-    name: "Dishwashing Liquid",
-    price: "₹65",
-    image: dishwashImg,
-    description: "Cuts grease and cleans utensils effectively.",
+    name: "Liquid Handwash",
+    image: handwashImg,
+    description: "Gentle liquid handwash for everyday hygiene.",
+    specs: [
+      "Mild on skin, harsh on germs",
+      "Suitable for dispensers in offices & public areas",
+      "Refreshing fragrance for all-day use",
+    ],
   },
   {
     id: 8,
-    name: "Hand Wash",
-    price: "₹55",
-    image: handwashImg,
-    description: "Gentle antibacterial hand wash.",
+    name: "Lemon Handwash",
+    image: lemonhandwash,
+    description: "Lemon-fragranced liquid handwash for fresh, clean hands.",
+    specs: [
+      "Citrusy lemon fragrance",
+      "Helps remove oil & light grease from hands",
+      "Perfect for kitchens, canteens & offices",
+    ],
   },
+
+  // 🔹 Kitchen & laundry
   {
     id: 9,
-    name: "Detergent Powder",
-    price: "₹180",
-    image: detergentPowderImg,
-    description: "Powerful stain-removal laundry detergent.",
+    name: "Dishwashing Liquid",
+    image: dishwashImg,
+    description: "Dishwashing liquid that cuts grease effectively.",
+    specs: [
+      "High-foam formula for tough grease",
+      "Gentle on hands with proper dilution",
+      "Suitable for hotels, canteens & catering units",
+    ],
   },
   {
     id: 10,
-    name: "Detergent Liquid",
-    price: "₹150",
-    image: detergentLiquidImg,
-    description: "Liquid detergent for hand & machine wash.",
+    name: "Detergent Powder",
+    image: detergentPowderImg,
+    description: "Stain-removal detergent powder for clothes.",
+    specs: [
+      "Effective on tough stains & daily dirt",
+      "Suitable for both bucket & machine wash",
+      "Fresh fragrance for linen & uniforms",
+    ],
   },
   {
     id: 11,
-    name: "Bleaching Powder",
-    price: "₹90",
-    image: bleachingImg,
-    description: "Industrial disinfectant and whitening agent.",
+    name: "Scrub Pads",
+    image: scrubImg,
+    description: "Heavy-duty scrub pads for utensils & surfaces.",
+    specs: [
+      "Non-rusting, long-lasting scrub material",
+      "Ideal for utensils, sinks & counters",
+      "Available in multiple sizes for different uses",
+    ],
   },
+
+  // 🔹 Hygiene & disposal
   {
     id: 12,
-    name: "Air Freshener",
-    price: "₹125",
-    image: airFreshnerImg,
-    description: "Instant freshness with long-lasting scent.",
+    name: "Toilet Tissue Rolls",
+    image: paperImg,
+    description: "Soft and absorbent toilet paper rolls.",
+    specs: [
+      "Soft, 2-ply tissue for comfort",
+      "High absorbency, low lint",
+      "Ideal for offices, hotels & malls",
+    ],
   },
   {
     id: 13,
-    name: "Room Freshener",
-    price: "₹80",
-    image: roomFreshnerImg,
-    description: "Continuous fragrance for rooms.",
+    name: "Garbage Bags",
+    image: garbageBagImg,
+    description: "Strong & durable garbage bags for daily waste.",
+    specs: [
+      "High-gauge bags, tear & leak resistant",
+      "Available in Small / Medium / Large sizes",
+      "Suitable for home, offices & commercial bins",
+    ],
   },
   {
     id: 14,
-    name: "Scrub Pads",
-    price: "₹35",
-    image: scrubImg,
-    description: "Heavy-duty scrub pads for tough cleaning.",
+    name: "Naphthalene Balls",
+    image: mothballsImg,
+    description:
+      "Naphthalene / moth balls to protect clothes, cupboards and storage areas from insects and odour.",
+    specs: [
+      "Prevents insects & bad odour",
+      "Ideal for cupboards, shoe racks & storage boxes",
+      "Long-lasting slow release",
+    ],
   },
+
+  // 🔹 Floor cleaner + tools
   {
     id: 15,
-    name: "Garbage Bags",
-    price: "₹140",
-    image: garbageBagImg,
-    description: "Strong & durable garbage bags.",
+    name: "Perfumed Floor Cleaner",
+    image: floor,
+    description:
+      "Perfumed floor cleaner for daily mopping, removes stains and leaves a fresh fragrance.",
+    specs: [
+      "Suitable for marble, tiles & granite",
+      "No residue, non-sticky after drying",
+      "Fresh long-lasting fragrance",
+      "Ideal for offices, schools & showrooms",
+    ],
+  },
+  {
+    id: 16,
+    name: "Heavy-Duty Floor Wiper",
+    image: wiper,
+    description:
+      "Sturdy floor wiper for quick drying of wet floors and wash areas.",
+    specs: [
+      "Wide blade for faster drying",
+      "Rust-free, sturdy handle compatible",
+      "Ideal for corridors, washrooms & large floors",
+    ],
+  },
+  {
+    id: 17,
+    name: "Premium Swing Dustbin",
+    image: dustbin,
+    description:
+      "Premium plastic dustbin with swing lid for neat and hygienic waste disposal.",
+    specs: [
+      "Durable plastic body with easy-to-clean surface",
+      "Swing lid to control odour",
+      "Perfect for offices, reception areas & washrooms",
+    ],
   },
 ];
 
@@ -134,22 +238,22 @@ const ProductsCleaning = () => {
   const [activeProduct, setActiveProduct] = useState(null);
   const itemsRef = useRef([]);
 
-  /* SCROLL ANIMATION OBSERVER */
+  // SIMPLE FADE-IN SCROLL ANIMATION (no left/right slide)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("show");
-          } else {
-            entry.target.classList.remove("show");
+            observer.unobserve(entry.target); // sirf ek baar animate karega
           }
         });
       },
-      { threshold: 0.25 }
+      { threshold: 0.2 }
     );
 
     itemsRef.current.forEach((el) => el && observer.observe(el));
+
     return () => observer.disconnect();
   }, []);
 
@@ -170,7 +274,16 @@ const ProductsCleaning = () => {
         ref={(el) => (itemsRef.current[0] = el)}
       >
         <h1 className="products-title">Our Cleaning Products</h1>
+
+        <h2 className="manufacturer-heading">
+          Manufacturer &amp; Wholesale Supplier — Bulk Supply
+        </h2>
+
         <p>Premium hygiene &amp; cleaning solutions for modern spaces.</p>
+
+        <p className="bulk-packaging-heading">
+          Bulk supply only in 5L &amp; 50L packaging.
+        </p>
 
         <div className="products-search">
           <input
@@ -183,32 +296,32 @@ const ProductsCleaning = () => {
 
       {/* GRID */}
       <section className="products-grid">
-        {filteredProducts.map((p, i) => {
-          const side = i % 2 === 0 ? "from-left" : "from-right";
-          return (
-            <article
-              key={p.id}
-              ref={(el) => (itemsRef.current[i + 1] = el)}
-              className={`product-card scroll-reveal ${side}`}
-              onClick={() => setActiveProduct(p)}
-              style={{ transitionDelay: `${i * 60}ms` }}
-            >
-              <div className="product-img">
-                <img src={p.image} alt={p.name} />
+        {filteredProducts.map((p, i) => (
+          <article
+            key={p.id}
+            ref={(el) => (itemsRef.current[i + 1] = el)}
+            className="product-card scroll-reveal"
+            onClick={() => setActiveProduct(p)}
+          >
+            <div className="product-img">
+              <img src={p.image} alt={p.name} />
+            </div>
+
+            <div className="product-body">
+              <h3>{p.name}</h3>
+              <p>{p.description}</p>
+
+              <div className="product-specs">
+                <span>Manufacturer &amp; Wholesale</span>
+                <span>Bulk Supply • 5L &amp; 50L</span>
               </div>
 
-              <div className="product-body">
-                <h3>{p.name}</h3>
-                <p>{p.description}</p>
-
-                <div className="product-footer">
-                  <span>{p.price}</span>
-                  <button type="button">VIEW</button>
-                </div>
+              <div className="product-footer">
+                <button type="button">VIEW</button>
               </div>
-            </article>
-          );
-        })}
+            </div>
+          </article>
+        ))}
       </section>
 
       {/* MODAL */}
@@ -231,27 +344,35 @@ const ProductsCleaning = () => {
             <h2>{activeProduct.name}</h2>
 
             <div className="modal-content">
-              <img
-                src={activeProduct.image}
-                alt={activeProduct.name}
-              />
+              <img src={activeProduct.image} alt={activeProduct.name} />
+
               <div>
                 <p>{activeProduct.description}</p>
-                <strong>{activeProduct.price}</strong>
+
+                {/* SPECS – Key details for each product */}
+                {activeProduct.specs && activeProduct.specs.length > 0 && (
+                  <div className="product-specs-list">
+                    <strong>Key Specifications:</strong>
+                    <ul>
+                      {activeProduct.specs.map((spec, index) => (
+                        <li key={index}>{spec}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <p className="bulk-packaging-inline">
+                  Bulk supply only in 5L &amp; 50L packaging.
+                </p>
 
                 <div className="modal-actions">
-                  <button className="primary" type="button">
-                    Add to Cart
-                  </button>
-
-                  {/* 📲 WhatsApp BULK ENQUIRY (dynamic product name) */}
                   <a
                     href={`https://wa.me/918954535455?text=${encodeURIComponent(
                       `Hi, I want a bulk enquiry for ${activeProduct.name} from OneAxis-EcoClean.`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="outline bulk-call-btn"
+                    className="outline"
                   >
                     Bulk Enquiry
                   </a>

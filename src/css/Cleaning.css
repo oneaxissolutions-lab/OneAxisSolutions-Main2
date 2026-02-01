@@ -1,12 +1,15 @@
 :root {
+  /* 🌈 Colourful gradient palette */
   --brand-gradient: linear-gradient(
     135deg,
-    #ff9a76 0%,
-    #ff7e9a 50%,
-    #7e9aff 100%
+    #ff6a88 0%,
+    #ff99ac 25%,
+    #c77dff 55%,
+    #5ce1ff 100%
   );
-  --brand-main: #ff7e9a;
-  --brand-dark: #e96882;
+  --brand-main: #ff6a88;     /* primary pink */
+  --brand-dark: #d9367e;     /* deeper pink */
+  --brand-accent: #5ce1ff;   /* cyan accent */
 }
 
 /* 🔁 GLOBAL RESET + PURE WHITE BASE */
@@ -20,21 +23,20 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #ffffff; /* yahi base background hai */
+  background: #ffffff;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
 }
 
 /* ========== WRAPPER ========== */
 .cleaning-wrapper {
-  background: transparent; /* base already body se white aa raha hai */
+  background: #ffffff;
   color: #0f172a;
   position: relative;
   overflow: hidden;
   min-height: 100vh;
 }
 
-/* sab sections content layer pe */
 .cleaning-wrapper > section {
   position: relative;
   z-index: 1;
@@ -44,21 +46,7 @@ section {
   position: relative;
 }
 
-/* 🔥 LIGHT PILLAR FULL PAGE BG */
-.cleaning-bg-pillars {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: transparent;
-}
-
-/* LightPillar ke andar jo canvas ban raha hoga – usko transparent force */
-.cleaning-bg-pillars canvas {
-  background: transparent !important;
-}
-
-/* small utility hover effects */
+/* utility hover effects */
 .hover-lift {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -89,7 +77,11 @@ section {
 /* ========== HERO ========== */
 .cleaning-hero {
   padding: 7rem 6vw 5rem;
-  background: transparent; /* important */
+  background:
+    radial-gradient(circle at 10% 0%, rgba(92, 225, 255, 0.25), transparent 55%),
+    radial-gradient(circle at 90% 10%, rgba(255, 154, 175, 0.32), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(199, 125, 255, 0.28), transparent 60%),
+    #ffffff;
 }
 
 .cleaning-hero-container {
@@ -102,7 +94,7 @@ section {
 }
 
 .cleaning-hero-left h1 {
-  font-size: clamp(2.8rem, 3.4vw + 1rem, 3.6rem);
+  font-size: clamp(2.6rem, 3.4vw + 1rem, 3.6rem);
   font-weight: 800;
   line-height: 1.05;
 }
@@ -112,6 +104,17 @@ section {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* badge line */
+.cleaning-hero-badge {
+  font-size: 0.9rem;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #ff6a88;
+  margin-bottom: 12px;
+  font-weight: 600;
+  opacity: 0.95;
 }
 
 .cleaning-hero-text {
@@ -173,18 +176,11 @@ section {
   box-shadow: 0 18px 50px rgba(15, 23, 42, 0.4);
 }
 
-.cleaning-premium-line {
-  margin-top: 1rem;
-  font-size: 0.85rem;
-  color: #6b7280;
-  font-style: italic;
-}
-
 .cleaning-hero-stats {
   margin-top: 2.6rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 2.6rem;
+  gap: 2.2rem;
 }
 
 .cleaning-hero-stats h3 {
@@ -208,16 +204,19 @@ section {
   align-items: center;
 }
 
-/* floating image */
-.hero-floating-img {
-  width: 380px;
-  max-width: 100%;
+.hero-model-viewer {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  height: auto;
   border-radius: 2rem;
   position: relative;
   z-index: 2;
   animation: floatHero 5.5s ease-in-out infinite;
+  background: transparent;
 }
 
+/* floating effect */
 @keyframes floatHero {
   0% {
     transform: translateY(0px);
@@ -243,7 +242,7 @@ section {
 .hero-glow-one {
   width: 260px;
   height: 260px;
-  background: rgba(255, 154, 118, 0.7);
+  background: rgba(255, 154, 175, 0.7);
   top: -40px;
   left: -20px;
 }
@@ -251,7 +250,7 @@ section {
 .hero-glow-two {
   width: 260px;
   height: 260px;
-  background: rgba(126, 154, 255, 0.65);
+  background: rgba(126, 154, 255, 0.7);
   bottom: -50px;
   right: -20px;
 }
@@ -259,11 +258,9 @@ section {
 @keyframes pulseGlow {
   0% {
     opacity: 0.5;
-    transform: scale(0.95);
   }
   100% {
     opacity: 0.9;
-    transform: scale(1.05);
   }
 }
 
@@ -295,7 +292,14 @@ section {
 /* ========== WHY CHOOSE ========== */
 .cleaning-why {
   padding: 4.2rem 6vw 4.5rem;
-  background: transparent;
+  background:
+    linear-gradient(
+      120deg,
+      #ffffff 0%,
+      #fff7fb 25%,
+      rgba(199, 125, 255, 0.18) 60%,
+      rgba(92, 225, 255, 0.15) 100%
+    );
 }
 
 .cleaning-why-head {
@@ -305,7 +309,7 @@ section {
 }
 
 .cleaning-why-head h2 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: #111827;
 }
@@ -348,7 +352,7 @@ section {
   padding: 0.6rem 1.2rem;
   border-radius: 999px;
   background: var(--brand-gradient);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.4);
+  box-shadow: 0 18px 40px rgba(199, 125, 255, 0.6);
   color: #ffffff;
   text-align: center;
   font-size: 0.8rem;
@@ -409,7 +413,14 @@ section {
 /* ========== COMMERCIAL ========== */
 .cleaning-commercial {
   padding: 4.5rem 6vw;
-  background: transparent;
+  background:
+    linear-gradient(
+      110deg,
+      #f5f7ff 0%,
+      #fdf4ff 30%,
+      rgba(255, 154, 175, 0.2) 65%,
+      rgba(92, 225, 255, 0.18) 100%
+    );
 }
 
 .cleaning-commercial-grid {
@@ -428,8 +439,12 @@ section {
   box-shadow: 0 26px 60px rgba(15, 23, 42, 0.18);
 }
 
+.cleaning-commercial-content {
+  padding-right: 2rem;
+}
+
 .commercial-title {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 600;
   color: #111827;
 }
@@ -449,11 +464,13 @@ section {
 }
 
 .commercial-stat-card {
-  background: #f9fafb;
+  background: #ffffff;
   border-radius: 1.1rem;
   padding: 1.1rem 1.3rem;
   min-width: 150px;
   text-align: center;
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.16);
+  border: 1px solid rgba(255, 154, 175, 0.4);
 }
 
 .commercial-stat-card h4 {
@@ -473,7 +490,14 @@ section {
 /* ========== BULK ========== */
 .cleaning-bulk {
   padding: 4.5rem 6vw 4.8rem;
-  background: transparent;
+  background:
+    linear-gradient(
+      115deg,
+      #ffffff 0%,
+      #fef6ff 22%,
+      rgba(199, 125, 255, 0.22) 60%,
+      rgba(92, 225, 255, 0.15) 100%
+    );
 }
 
 .cleaning-bulk-inner {
@@ -524,6 +548,10 @@ section {
   color: #4b5563;
 }
 
+.bulk-cta {
+  margin-top: 1.8rem;
+}
+
 .cleaning-bulk-stats {
   display: grid;
   grid-template-columns: 1fr;
@@ -531,11 +559,11 @@ section {
 }
 
 .bulk-stat-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   border-radius: 1.2rem;
   padding: 1rem 1.2rem;
-  backdrop-filter: blur(10px);
   box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(92, 225, 255, 0.4);
 }
 
 .bulk-number {
@@ -550,20 +578,36 @@ section {
   font-size: 0.8rem;
 }
 
+/* BULK + HERO TOP NOTE */
+.bulk-packaging-note {
+  justify-self: end;           
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 0.4rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+  border: 1px solid rgba(92, 225, 255, 0.35);
+}
+
 /* ========== FAQ ========== */
 .cleaning-faq-pro {
   position: relative;
   padding: 5rem 6vw 5.5rem;
-  background: transparent;
+  background:
+    radial-gradient(circle at 70% 0%, rgba(199, 125, 255, 0.32), transparent 55%),
+    radial-gradient(circle at 0% 100%, rgba(255, 154, 175, 0.32), transparent 55%),
+    linear-gradient(180deg, #fff7fb 0%, #fff9f4 100%);
   overflow: hidden;
 }
 
 .faq-bg-glow {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 50% 25%, rgba(126, 154, 255, 0.16), transparent 45%),
-    radial-gradient(circle at 85% 70%, rgba(255, 154, 118, 0.16), transparent 50%);
+  background: transparent;
   pointer-events: none;
 }
 
@@ -587,6 +631,32 @@ section {
   font-size: 0.95rem;
 }
 
+.cleaning-faq-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  align-items: center;
+}
+
+/* LEFT video */
+.faq-video-wrapper {
+  position: relative;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
+}
+
+.faq-video {
+  width: 100%;
+  height: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 1.6rem;
+  display: block;
+}
+
+/* RIGHT side FAQ cards */
 .cleaning-faq-container {
   position: relative;
   max-width: 900px;
@@ -682,12 +752,12 @@ section {
 .faq-btn.primary {
   background: var(--brand-gradient);
   color: #ffffff;
-  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.28);
+  box-shadow: 0 14px 35px rgba(199, 125, 255, 0.45);
 }
 
 .faq-btn.primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.35);
+  box-shadow: 0 18px 50px rgba(199, 125, 255, 0.55);
 }
 
 .faq-btn.outline {
@@ -713,8 +783,7 @@ section {
     text-align: center;
   }
 
-  .cleaning-hero-text,
-  .cleaning-premium-line {
+  .cleaning-hero-text {
     margin-left: auto;
     margin-right: auto;
   }
@@ -736,6 +805,30 @@ section {
 
   .cleaning-bulk-stats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero-tag-top {
+    right: 10px;
+  }
+  .hero-tag-mid {
+    left: 10px;
+  }
+  .hero-tag-bottom {
+    right: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .cleaning-faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-video-wrapper {
+    max-height: 460px;
+  }
+
+  .cleaning-faq-container {
+    max-width: 100%;
   }
 }
 
@@ -759,9 +852,34 @@ section {
   .cleaning-bulk-stats {
     grid-template-columns: 1fr;
   }
+
+  .hero-model-viewer {
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  .cleaning-hero-stats {
+    gap: 1.8rem;
+  }
+
+  .bulk-packaging-note {
+    justify-self: start;
+  }
 }
 
 @media (max-width: 640px) {
+  .cleaning-hero-left h1 {
+    font-size: 2.2rem;
+  }
+
+  .commercial-title {
+    font-size: 2rem;
+  }
+
+  .cleaning-bulk-text h3 {
+    font-size: 1.8rem;
+  }
+
   .faq-question-text {
     font-size: 0.92rem;
   }
@@ -770,5 +888,12 @@ section {
     min-width: 38px;
     height: 38px;
     font-size: 1.2rem;
+  }
+
+  .bulk-packaging-note {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-inline: auto;
+    display: inline-block;
   }
 }

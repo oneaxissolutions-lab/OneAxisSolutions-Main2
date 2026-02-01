@@ -46,12 +46,12 @@
 
 /* DESKTOP LOGO SIZE FIXED TO 45PX */
 .navbar-logo-img {
-    height: 45px; /* Wapis 45px kar diya hai */
-    width: auto;
-    display: block;
-    object-fit: contain;
-    /* Agar logo ko bina navbar bada kiye zoom karna hai toh neeche wali line uncomment karein: */
-    /* transform: scale(1.2); */ 
+  height: 45px; /* Wapis 45px kar diya hai */
+  width: auto;
+  display: block;
+  object-fit: contain;
+  /* Agar logo ko bina navbar bada kiye zoom karna hai toh neeche wali line uncomment karein: */
+  /* transform: scale(1.2); */ 
 }
 
 /* Navigation Menu */
@@ -311,15 +311,15 @@
 
 /* Updated Mobile Logo */
 .sidebar-logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 /* MOBILE LOGO FIXED TO 40PX */
 .sidebar-logo-img {
-    height: 40px; /* Mobile ke liye standard size */
-    width: auto;
-    object-fit: contain;
+  height: 40px; /* Mobile ke liye standard size */
+  width: auto;
+  object-fit: contain;
 }
 
 .sidebar-close {
@@ -413,7 +413,7 @@
 
 /* Sidebar Footer */
 .sidebar-footer {
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 3.5rem; /* ⬅️ bottom padding badha diya, button thoda upar aayega */
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 

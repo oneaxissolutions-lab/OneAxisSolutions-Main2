@@ -1,32 +1,31 @@
-// src/pages/Cleaning.jsx
+/* eslint-disable react/no-unknown-property */
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../css/Cleaning.css";
 
-import heroImg from "../assets/cleaning-hero.jpg";
 import industryImg from "../assets/industrial-cleaning.jpg";
 import commercialImg from "../assets/commercial-cleaning.jpg";
+import faqVideo from "../assets/video2.mp4";
 
-// LightPillar component (components folder me)
-import LightPillar from "../components/LightPillar";
+/* ================= ANIMATIONS ================= */
 
-// ============ ANIMATION VARIANTS ============
 const heroLeft = {
-  hidden: { opacity: 0, x: -50 },
+  hidden: { opacity: 0, x: -60 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
 const heroRight = {
-  hidden: { opacity: 0, x: 50 },
+  hidden: { opacity: 0, x: 60, scale: 0.95 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    scale: 1,
+    transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
@@ -39,138 +38,74 @@ const fadeUp = {
   },
 };
 
-const zoomIn = {
-  hidden: { opacity: 0, scale: 0.9, y: 30 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
-
-const slideUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
-
-const slideFromRight = {
-  hidden: { opacity: 0, x: 60 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
-
-const staggerContainer = {
+const stagger = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.15 } },
 };
 
-const faqCardVariant = {
-  hidden: { opacity: 0, y: 30, scale: 0.98 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
+/* ================= COMPONENT ================= */
 
 const Cleaning = () => {
+  const [activeFaq, setActiveFaq] = useState(null);
+
   const faqs = [
     {
-      question: "What types of cleaning products does OneAxis-EcoClean offer?",
-      answer:
-        "We offer a complete portfolio of industrial, commercial and institutional cleaning solutions including floor cleaners, surface disinfectants, washroom hygiene products, degreasers and eco-friendly sanitizers.",
+      q: "What types of cleaning products does OneAxis-EcoClean offer?",
+      a: "Industrial, commercial and institutional cleaning solutions including floor cleaners, disinfectants, degreasers and eco-friendly sanitizers.",
     },
     {
-      question:
-        "Are OneAxis-EcoClean products suitable for commercial and industrial use?",
-      answer:
-        "Yes. Our formulations are engineered for demanding commercial and industrial environments such as offices, factories, hospitals, hotels and warehouses.",
+      q: "Are these products suitable for commercial and industrial use?",
+      a: "Yes. All products are designed for offices, hospitals, hotels, factories and large facilities.",
     },
     {
-      question: "How can I place a bulk order for cleaning products?",
-      answer:
-        "You can contact our team directly for bulk and contract-based supply. We provide customised pricing, scheduled deliveries and centralised billing for multi-site businesses.",
+      q: "Can I place a bulk order for cleaning products?",
+      a: "Yes, we provide bulk pricing, scheduled supply and dedicated account support for institutional buyers.",
     },
     {
-      question:
-        "What makes OneAxis-EcoClean different from other cleaning brands?",
-      answer:
-        "Our products blend professional-grade performance with an eco-conscious approach. We focus on safety, sustainability and long-term surface care without compromising on cleaning power.",
-    },
-    {
-      question: "Do you provide delivery services across India?",
-      answer:
-        "Yes, we deliver across India using reliable logistics partners, with priority service and stock planning support for bulk and institutional clients.",
+      q: "Do you provide delivery services across India?",
+      a: "Yes, pan-India delivery is available with reliable logistics partners.",
     },
   ];
 
-  const [activeFaq, setActiveFaq] = useState(null);
-
   return (
     <main className="cleaning-wrapper">
-      {/* 🔥 FULL-PAGE LIGHT PILLAR BACKGROUND */}
-      <div className="cleaning-bg-pillars">
-        <LightPillar
-          topColor="#5227FF"
-          bottomColor="#FF9FFC"
-          intensity={1}
-          rotationSpeed={0.3}
-          glowAmount={0.002}
-          pillarWidth={3}
-          pillarHeight={0.4}
-          noiseIntensity={0.5}
-          pillarRotation={25}
-          interactive={false}
-          mixBlendMode="screen"
-          quality="high"
-        />
-      </div>
-
-      {/* ============ HERO ============ */}
+      {/* ================= HERO ================= */}
       <section className="cleaning-hero">
+        <p className="bulk-packaging-note">
+          Bulk supply only in 5L &amp; 50L packaging.
+        </p>
+
         <motion.div
           className="cleaning-hero-container"
-          variants={staggerContainer}
+          variants={stagger}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.4 }}
+          animate="visible"
         >
-          {/* LEFT */}
-          <motion.div variants={heroLeft} className="cleaning-hero-left">
+          {/* LEFT CONTENT */}
+          <motion.div className="cleaning-hero-left" variants={heroLeft}>
+            <p className="cleaning-hero-badge">
+              Manufacturer &amp; Wholesale Supplier — Bulk Supply
+            </p>
+
             <h1>
               OneAxis-EcoClean <br />
               <span>Deep Shine</span> <br />
-              Solutions for Your <br />
-              Business Needs
+              Solutions for Modern <br />
+              Businesses
             </h1>
 
             <p className="cleaning-hero-text">
-              OneAxis-EcoClean combines advanced cleaning science with
-              design-led aesthetics to deliver deeper, longer-lasting shine.
-              Built for brands that see cleanliness as a core part of their
-              customer experience.
+              Premium, industrial-grade and eco-responsible cleaning products
+              designed for businesses that value hygiene, safety and brand
+              image.
             </p>
 
             <div className="cleaning-hero-buttons">
-              {/* ✅ GET QUOTE → WHATSAPP (same number) */}
               <button
                 className="btn-primary"
                 onClick={() =>
                   window.open(
-                    "https://wa.me/918954535455?text=Hi,%20I%20want%20a%20cleaning%20quote%20from%20OneAxis-EcoClean",
+                    "https://wa.me/918954535455?text=Hi,%20I%20need%20a%20cleaning%20quote",
                     "_blank"
                   )
                 }
@@ -178,61 +113,57 @@ const Cleaning = () => {
                 Get Quote
               </button>
 
-              {/* ✅ VIEW PRODUCTS → ProductsCleaning.jsx route */}
               <Link to="/cleaning/products" className="btn-outline">
                 View Products
               </Link>
             </div>
 
-            <p className="cleaning-premium-line">
-              Crafted for businesses that treat hygiene, ambience and brand
-              image as one experience.
-            </p>
-
             <div className="cleaning-hero-stats">
               <div>
                 <h3>500+</h3>
-                <span>CLEANING PRODUCTS</span>
+                <span>PRODUCTS</span>
               </div>
               <div>
-                <h3>50K+</h3>
-                <span>SATISFIED CUSTOMERS</span>
+                <h3>20 Lakh+ liters Supplied</h3>
+                <span>Cleaning Solutions Delivered</span>
               </div>
               <div>
                 <h3>99%</h3>
-                <span>QUALITY GUARANTEE</span>
+                <span>QUALITY</span>
               </div>
             </div>
           </motion.div>
 
-          {/* RIGHT */}
-          <motion.div variants={heroRight} className="cleaning-hero-right">
+          {/* RIGHT – 3D MODEL */}
+          <motion.div className="cleaning-hero-right" variants={heroRight}>
             <div className="hero-glow hero-glow-one" />
             <div className="hero-glow hero-glow-two" />
-            <motion.img
-              src={heroImg}
-              alt="OneAxis EcoClean Products"
-              className="hero-floating-img"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+
+            <model-viewer
+              className="hero-model-viewer"
+              src="/cleaning+products+3d+model.glb"
+              alt="Cleaning Products 3D Model"
+              camera-controls
+              disable-zoom
+              shadow-intensity="0.7"
+              exposure="1.1"
+              camera-orbit="70deg 75deg 2.8m"
             />
 
             <div className="hero-tag hero-tag-top">Industrial Cleaners</div>
             <div className="hero-tag hero-tag-mid">Sanitizers</div>
-            <div className="hero-tag hero-tag-bottom">Quality Assured</div>
+            <div className="hero-tag hero-tag-bottom">Eco Safe</div>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* ============ WHY CHOOSE (gradient background) ============ */}
-      <section id="why-cleaning" className="cleaning-why">
+      {/* ================= WHY CHOOSE ================= */}
+      <section className="cleaning-why">
         <motion.div
           className="cleaning-why-head"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.4 }}
         >
           <h2>Why Choose OneAxis-EcoClean</h2>
           <p>
@@ -241,32 +172,26 @@ const Cleaning = () => {
           </p>
         </motion.div>
 
-        <div className="cleaning-why-grid">
-          {/* LEFT IMAGE CARD – zoom in */}
+        <motion.div
+          className="cleaning-why-grid"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+        >
+          {/* LEFT CARD */}
           <motion.div
-            className="cleaning-why-left"
-            variants={zoomIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
+            variants={fadeUp}
+            className="why-image-card hover-lift"
           >
-            <div className="why-image-card hover-lift">
-              <img src={industryImg} alt="Industrial solutions" />
-              <div className="why-expert-chip">
-                <span className="chip-main">Expert</span>
-                <span className="chip-sub">Service</span>
-              </div>
+            <img src={industryImg} alt="Industrial Cleaning" />
+            <div className="why-expert-chip">
+              <span className="chip-main">Expert</span>
+              <span className="chip-sub">Service</span>
             </div>
           </motion.div>
 
-          {/* RIGHT TEXT – fade up */}
-          <motion.div
-            className="cleaning-why-right"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
-          >
+          {/* RIGHT CONTENT */}
+          <motion.div variants={fadeUp} className="cleaning-why-right">
             <span className="why-pill">INDUSTRY LEADER</span>
             <h3 className="why-title">Industrial-Grade Cleaning Solutions</h3>
             <p className="why-desc">
@@ -275,69 +200,50 @@ const Cleaning = () => {
               surface protection across large-scale facilities.
             </p>
 
-            <motion.div
-              className="why-feature-list"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.4 }}
-            >
-              <motion.div
-                variants={fadeUp}
-                className="why-feature-card hover-lift"
-              >
-                <h4>Heavy-Duty Performance</h4>
-                <p>
-                  Handles deep-set stains, grease and high-traffic wear while
-                  maintaining a refined finish.
-                </p>
-              </motion.div>
-              <motion.div
-                variants={fadeUp}
-                className="why-feature-card hover-lift"
-              >
-                <h4>Eco-Responsible Formulas</h4>
-                <p>
-                  Designed to balance powerful cleaning action with lower
-                  toxicity and mindful chemistry.
-                </p>
-              </motion.div>
-              <motion.div
-                variants={fadeUp}
-                className="why-feature-card hover-lift"
-              >
-                <h4>Certified & Surface-Safe</h4>
-                <p>
-                  Tested across sensitive surfaces and regulated workspaces for
-                  dependable, everyday use.
-                </p>
-              </motion.div>
-            </motion.div>
+            <div className="why-feature-list">
+              <div className="why-feature-card">
+                <strong>Heavy-Duty Performance</strong>
+                <br />
+                Handles deep-set stains, grease and high-traffic wear while
+                maintaining a refined finish.
+              </div>
+              <div className="why-feature-card">
+                <strong>Eco-Responsible Formulas</strong>
+                <br />
+                Designed to balance powerful cleaning action with lower toxicity
+                and mindful chemistry.
+              </div>
+              <div className="why-feature-card">
+                <strong>Certified &amp; Surface-Safe</strong>
+                <br />
+                Tested across sensitive surfaces and regulated workspaces for
+                dependable, everyday use.
+              </div>
+            </div>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* ============ COMMERCIAL SERVICES (white bg) ============ */}
+      {/* ================= COMMERCIAL ================= */}
       <section className="cleaning-commercial">
-        <div className="cleaning-commercial-grid">
-          {/* LEFT IMAGE – slide up */}
+        <motion.div
+          className="cleaning-commercial-grid"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+        >
+          {/* LEFT IMAGE CARD */}
           <motion.div
+            variants={fadeUp}
             className="cleaning-commercial-image hover-lift"
-            variants={slideUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
           >
             <img src={commercialImg} alt="Commercial Cleaning" />
           </motion.div>
 
-          {/* RIGHT CONTENT – fade up */}
+          {/* RIGHT TEXT SIDE */}
           <motion.div
-            className="cleaning-commercial-content"
             variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
+            className="cleaning-commercial-content"
           >
             <h3 className="commercial-title">Commercial Cleaning Services</h3>
             <p className="commercial-desc">
@@ -347,51 +253,35 @@ const Cleaning = () => {
               delight every visitor.
             </p>
 
-            <motion.div
-              className="commercial-stats"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.35 }}
-            >
-              <motion.div
-                variants={fadeUp}
-                className="commercial-stat-card hover-lift"
-              >
+            <div className="commercial-stats">
+              <div className="commercial-stat-card">
                 <h4>15+</h4>
                 <span>Years Experience</span>
-              </motion.div>
-              <motion.div
-                variants={fadeUp}
-                className="commercial-stat-card hover-lift"
-              >
+              </div>
+              <div className="commercial-stat-card">
                 <h4>Custom</h4>
                 <span>Cleaning Plans</span>
-              </motion.div>
-              <motion.div
-                variants={fadeUp}
-                className="commercial-stat-card hover-lift"
-              >
+              </div>
+              <div className="commercial-stat-card">
                 <h4>Professional</h4>
                 <span>Service Standards</span>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* ============ BULK SUPPLY (gradient bg) ============ */}
+      {/* ================= BULK SUPPLY ================= */}
       <section className="cleaning-bulk">
-        <div className="cleaning-bulk-inner">
-          {/* LEFT TEXT – fade up */}
-          <motion.div
-            className="cleaning-bulk-text"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-          >
-            <span className="bulk-pill">BULK & INSTITUTIONAL SUPPLY</span>
+        <motion.div
+          className="cleaning-bulk-inner"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+        >
+          {/* LEFT CONTENT */}
+          <motion.div variants={fadeUp} className="cleaning-bulk-text">
+            <span className="bulk-pill">BULK &amp; INSTITUTIONAL SUPPLY</span>
             <h3>Bulk Supply for Growing Businesses</h3>
             <p>
               From multi-location brands to large campuses and industrial
@@ -400,29 +290,29 @@ const Cleaning = () => {
             </p>
 
             <div className="bulk-grid">
-              <div className="hover-lift-small">
-                <strong>Offices & Corporates</strong>
+              <div>
+                <strong>Offices &amp; Corporates</strong>
                 <p>
                   Centralised supply for workstations, cafeterias, washrooms and
                   common areas.
                 </p>
               </div>
-              <div className="hover-lift-small">
-                <strong>Hotels & Hospitality</strong>
+              <div>
+                <strong>Hotels &amp; Hospitality</strong>
                 <p>
                   Guest rooms, lobbies, linen and kitchen hygiene under one
                   curated program.
                 </p>
               </div>
-              <div className="hover-lift-small">
-                <strong>Healthcare & Institutions</strong>
+              <div>
+                <strong>Healthcare &amp; Institutions</strong>
                 <p>
                   High-hygiene solutions tuned for sensitive, critical
                   environments.
                 </p>
               </div>
-              <div className="hover-lift-small">
-                <strong>Industrial & Warehouses</strong>
+              <div>
+                <strong>Industrial &amp; Warehouses</strong>
                 <p>
                   Heavy-duty options for shopfloors, loading bays and storage
                   areas.
@@ -430,63 +320,53 @@ const Cleaning = () => {
               </div>
             </div>
 
-            <button
-              className="btn-white"
-              onClick={() =>
-                window.open(
-                  "https://wa.me/918954535455?text=Hi,%20I%20want%20to%20discuss%20bulk%20supply%20with%20OneAxis-EcoClean",
-                  "_blank"
-                )
-              }
-            >
-              Discuss Bulk Pricing
-            </button>
+            <div className="bulk-cta">
+              <button
+                className="btn-primary"
+                onClick={() =>
+                  window.open(
+                    "https://wa.me/918954535455?text=Hi,%20I%20want%20to%20discuss%20bulk%20cleaning%20supply%20pricing",
+                    "_blank"
+                  )
+                }
+              >
+                Discuss Bulk Pricing
+              </button>
+            </div>
           </motion.div>
 
-          {/* RIGHT STATS – slide from right */}
-          <motion.div
-            className="cleaning-bulk-stats"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-          >
-            <motion.div
-              variants={slideFromRight}
-              className="bulk-stat-card hover-lift"
-            >
+          {/* RIGHT STAT CARDS + TOP NOTE */}
+          <motion.div variants={fadeUp} className="cleaning-bulk-stats">
+            {/* Right-top note */}
+            <p className="bulk-packaging-note">
+              Bulk supply only in 5L &amp; 50L packaging.
+            </p>
+
+            <div className="bulk-stat-card">
               <span className="bulk-number">30+</span>
               <span className="bulk-label">Cities Served</span>
-            </motion.div>
-            <motion.div
-              variants={slideFromRight}
-              className="bulk-stat-card hover-lift"
-            >
+            </div>
+            <div className="bulk-stat-card">
               <span className="bulk-number">100K+</span>
               <span className="bulk-label">Units Supplied Yearly</span>
-            </motion.div>
-            <motion.div
-              variants={slideFromRight}
-              className="bulk-stat-card hover-lift"
-            >
+            </div>
+            <div className="bulk-stat-card">
               <span className="bulk-number">Dedicated</span>
               <span className="bulk-label">Account Support</span>
-            </motion.div>
+            </div>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* ============ FAQ SECTION ============ */}
-      <section id="faq" className="cleaning-faq-pro">
+      {/* ================= FAQ WITH VIDEO ================= */}
+      <section className="cleaning-faq-pro">
         <div className="faq-bg-glow" />
 
-        {/* FAQ HEADING */}
         <motion.div
           className="cleaning-faq-head"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
         >
           <h2>Frequently Asked Questions</h2>
           <p>
@@ -495,50 +375,61 @@ const Cleaning = () => {
           </p>
         </motion.div>
 
-        {/* FAQ LIST */}
-        <motion.div
-          className="cleaning-faq-container"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-        >
-          {faqs.map((item, idx) => (
-            <motion.div
-              key={idx}
-              variants={faqCardVariant}
-              className={`faq-card hover-lift-soft ${
-                activeFaq === idx ? "open" : ""
-              }`}
-            >
-              <button
-                className="faq-question-row"
-                onClick={() =>
-                  setActiveFaq(activeFaq === idx ? null : idx)
-                }
-              >
-                <span className="faq-question-text">{item.question}</span>
-                <span className="faq-toggle-btn">
-                  {activeFaq === idx ? "−" : "+"}
-                </span>
-              </button>
-
-              <div className="faq-answer">
-                <p>{item.answer}</p>
-              </div>
-            </motion.div>
-          ))}
-
-          {/* FAQ END BUTTONS */}
-          <motion.div className="faq-end-buttons" variants={fadeUp}>
-            <Link to="/cleaning/about" className="faq-btn primary">
-              About Us
-            </Link>
-            <Link to="/cleaning/products" className="faq-btn outline">
-              Products
-            </Link>
+        {/* LEFT VIDEO | RIGHT FAQ GRID */}
+        <div className="cleaning-faq-grid">
+          {/* LEFT – VIDEO */}
+          <motion.div
+            className="faq-video-wrapper"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+          >
+            <video
+              src={faqVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="faq-video"
+            />
           </motion.div>
-        </motion.div>
+
+          {/* RIGHT – FAQ CARDS */}
+          <div className="cleaning-faq-container">
+            {faqs.map((f, i) => (
+              <div
+                key={i}
+                className={`faq-card ${activeFaq === i ? "open" : ""}`}
+              >
+                <button
+                  type="button"
+                  className="faq-question-row"
+                  onClick={() =>
+                    setActiveFaq(activeFaq === i ? null : i)
+                  }
+                >
+                  <span className="faq-question-text">{f.q}</span>
+                  <div className="faq-toggle-btn">
+                    {activeFaq === i ? "−" : "+"}
+                  </div>
+                </button>
+
+                <div className="faq-answer">
+                  <p>{f.a}</p>
+                </div>
+              </div>
+            ))}
+
+            <div className="faq-end-buttons">
+              <Link to="/about" className="faq-btn primary">
+                About Us
+              </Link>
+              <Link to="/cleaning/products" className="faq-btn outline">
+                Products
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );

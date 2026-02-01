@@ -15,12 +15,7 @@ const Navbar = () => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-
-    if (!isSidebarOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = !isSidebarOpen ? "hidden" : "unset";
   };
 
   const closeSidebar = () => {
@@ -40,20 +35,6 @@ const Navbar = () => {
   // scroll reset on route change
   useEffect(() => {
     window.scrollTo(0, 0);
-    const homeContainer = document.querySelector(".home-container");
-    const softwaresContainer = document.querySelector(".softwares-container");
-    const interiorPage = document.querySelector(".interior-design-page");
-
-    if (homeContainer) {
-      homeContainer.scrollTo(0, 0);
-    }
-    if (softwaresContainer) {
-      softwaresContainer.scrollTo(0, 0);
-    }
-    if (interiorPage) {
-      interiorPage.scrollTo(0, 0);
-    }
-
     setIsVisible(true);
     setLastScrollY(0);
   }, [location.pathname]);
@@ -62,20 +43,6 @@ const Navbar = () => {
   useEffect(() => {
     const controlNavbar = () => {
       let currentScrollY = window.pageYOffset || window.scrollY;
-
-      if (currentScrollY === 0) {
-        const homeContainer = document.querySelector(".home-container");
-        const softwaresContainer = document.querySelector(".softwares-container");
-        const interiorPage = document.querySelector(".interior-design-page");
-
-        if (homeContainer) {
-          currentScrollY = homeContainer.scrollTop;
-        } else if (softwaresContainer) {
-          currentScrollY = softwaresContainer.scrollTop;
-        } else if (interiorPage) {
-          currentScrollY = interiorPage.scrollTop;
-        }
-      }
 
       if (currentScrollY < 10) {
         setIsVisible(true);
@@ -88,49 +55,12 @@ const Navbar = () => {
       setLastScrollY(currentScrollY);
     };
 
-    const timer = setTimeout(() => {
-      window.addEventListener("scroll", controlNavbar, { passive: true });
-
-      const homeContainer = document.querySelector(".home-container");
-      const softwaresContainer = document.querySelector(".softwares-container");
-      const interiorPage = document.querySelector(".interior-design-page");
-
-      if (homeContainer) {
-        homeContainer.addEventListener("scroll", controlNavbar, {
-          passive: true,
-        });
-      }
-      if (softwaresContainer) {
-        softwaresContainer.addEventListener("scroll", controlNavbar, {
-          passive: true,
-        });
-      }
-      if (interiorPage) {
-        interiorPage.addEventListener("scroll", controlNavbar, {
-          passive: true,
-        });
-      }
-    }, 100);
+    window.addEventListener("scroll", controlNavbar, { passive: true });
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener("scroll", controlNavbar);
-
-      const homeContainer = document.querySelector(".home-container");
-      const softwaresContainer = document.querySelector(".softwares-container");
-      const interiorPage = document.querySelector(".interior-design-page");
-
-      if (homeContainer) {
-        homeContainer.removeEventListener("scroll", controlNavbar);
-      }
-      if (softwaresContainer) {
-        softwaresContainer.removeEventListener("scroll", controlNavbar);
-      }
-      if (interiorPage) {
-        interiorPage.removeEventListener("scroll", controlNavbar);
-      }
     };
-  }, [lastScrollY, location.pathname]);
+  }, [lastScrollY]);
 
   useEffect(() => {
     return () => {
@@ -156,7 +86,11 @@ const Navbar = () => {
           <div className="nav-dropdown">
             <a href="#services" className="nav-link">
               Services
-              <svg className="dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+              <svg
+                className="dropdown-icon"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
                 <path
                   fillRule="evenodd"
                   d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -174,16 +108,15 @@ const Navbar = () => {
               <Link to="/interior" className="dropdown-item">
                 Interior Design
               </Link>
-              {/* 🔥 NEW: AUTOMATION SERVICES */}
               <Link to="/automation" className="dropdown-item">
                 Automation Services
               </Link>
             </div>
           </div>
 
-          {/* MORE – Cleaning & Hygiene yahi rahega */}
+          {/* HOUSE CLEANING PRODUCTS */}
           <Link to="/cleaning" className="nav-link">
-            More
+            House Cleaning Products
           </Link>
         </div>
 
@@ -233,7 +166,12 @@ const Navbar = () => {
             onClick={closeSidebar}
             aria-label="Close menu"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -269,9 +207,8 @@ const Navbar = () => {
               >
                 Interior Design
               </Link>
-              {/* 🔥 NEW: AUTOMATION SERVICES – MOBILE */}
               <Link
-                to="/automationservices"
+                to="/automation"
                 className="sidebar-sublink"
                 onClick={closeSidebar}
               >
@@ -280,13 +217,13 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* MORE – Cleaning & Hygiene */}
+          {/* HOUSE CLEANING PRODUCTS (MOBILE) */}
           <Link
             to="/cleaning"
             className="sidebar-link"
             onClick={closeSidebar}
           >
-            More
+            House Cleaning Products
           </Link>
         </nav>
 
