@@ -1,3 +1,4 @@
+/* src/css/ProductsCleaning.css */
 :root {
   --brand-gradient: linear-gradient(135deg, #ff9a76, #ff7e9a, #7e9aff);
   --brand-primary: #ff7e9a;
@@ -126,6 +127,14 @@
   color: var(--brand-muted);
 }
 
+/* ✅ Built for Quality line (card) */
+.built-quality-card {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--brand-secondary);
+}
+
 /* Card specs */
 .product-specs {
   margin-top: 0.6rem;
@@ -151,6 +160,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 0.5rem;
   margin-top: 1rem;
 }
 
@@ -163,6 +173,24 @@
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
+}
+
+/* ✅ ON DEMAND BUTTON */
+.on-demand-btn {
+  background: transparent !important;
+  border: 2px solid var(--brand-secondary) !important;
+  color: var(--brand-secondary) !important;
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.on-demand-btn:hover {
+  background: var(--brand-secondary) !important;
+  color: #fff !important;
 }
 
 /* MODAL */
@@ -230,24 +258,12 @@
   color: var(--brand-muted);
 }
 
-/* Phenyl flavours */
-.product-flavours {
-  margin-top: 0.4rem;
-}
-
-.product-flavours strong {
+/* ✅ Built for Quality line (modal) */
+.built-quality {
+  font-weight: 800;
   font-size: 0.9rem;
-  color: var(--brand-dark);
-}
-
-.product-flavours ul {
-  margin: 4px 0 0;
-  padding-left: 18px;
-}
-
-.product-flavours li {
-  font-size: 0.85rem;
-  line-height: 1.5;
+  color: var(--brand-secondary);
+  margin-top: 0.1rem;
 }
 
 /* inline bulk info inside modal */
@@ -260,6 +276,9 @@
 /* Modal actions */
 .modal-actions {
   margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* Buttons */
@@ -269,8 +288,13 @@
   color: var(--brand-primary);
   padding: 0.6rem 1.6rem;
   border-radius: 999px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
+}
+
+.secondary-outline {
+  border-color: var(--brand-secondary);
+  color: var(--brand-secondary);
 }
 
 /* SCROLL ANIMATIONS – only fade (no slide) */
@@ -319,6 +343,7 @@
     max-width: 90%;
   }
 }
+
 /* Key Specs list in modal */
 .product-specs-list {
   margin-top: 0.4rem;

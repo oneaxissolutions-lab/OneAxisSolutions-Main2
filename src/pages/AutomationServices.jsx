@@ -229,19 +229,17 @@ const AutomationServices = () => {
               </div>
 
               <h1 className="autoTitle">
-                Build{" "}
-                <span className="autoGradientText">smart workflows</span> that
-                quietly run your business.
+                Build <span className="autoGradientText">smart workflows</span>{" "}
+                that quietly run your business.
               </h1>
 
               <p className="autoSub">
-                We design n8n-powered automations that connect your tools,
-                remove repetitive work and keep your operations consistent —
-                with logs, retries and monitoring built in from day one.
+                We design n8n-powered automations that connect your tools, remove
+                repetitive work and keep your operations consistent — with logs,
+                retries and monitoring built in from day one.
               </p>
 
               <div className="autoHeroActions">
-                {/* ✅ SAME NUMBER USED HERE */}
                 <button
                   className="autoBtn primary"
                   onClick={() => window.open(whatsappQuote, "_blank")}
@@ -330,7 +328,6 @@ const AutomationServices = () => {
 
                 <div className="autoPreviewFooter">
                   <span>Retries • Logs • Alerts • Deduplication</span>
-                  {/* ✅ SAME NUMBER USED HERE */}
                   <button
                     className="autoMiniBtn"
                     onClick={() => window.open(whatsappAudit, "_blank")}
@@ -370,7 +367,11 @@ const AutomationServices = () => {
             viewport={{ once: false, amount: 0.25 }}
           >
             {offerings.map((x) => (
-              <motion.article className="autoCard" key={x.title} variants={fadeUp}>
+              <motion.article
+                className="autoCard"
+                key={x.title}
+                variants={fadeUp}
+              >
                 <div className="autoCardTop">
                   <div className="autoIcon">{x.icon}</div>
                   <span className="autoMeta">{x.meta}</span>
@@ -469,8 +470,8 @@ const AutomationServices = () => {
               <span className="autoGradientText">automation</span>
             </h2>
             <p>
-              Not just “cool tech” — a visible shift in how your team works
-              every day.
+              Not just “cool tech” — a visible shift in how your team works every
+              day.
             </p>
           </motion.div>
 
@@ -513,8 +514,7 @@ const AutomationServices = () => {
             viewport={{ once: false, amount: 0.3 }}
           >
             <h2>
-              Why OneAxis{" "}
-              <span className="autoGradientText">Solutions</span>
+              Why OneAxis <span className="autoGradientText">Solutions</span>
             </h2>
             <p>
               Premium build quality and a reliability-first mindset so your
@@ -565,8 +565,7 @@ const AutomationServices = () => {
             viewport={{ once: false, amount: 0.3 }}
           >
             <h2>
-              FAQs on{" "}
-              <span className="autoGradientText">automation</span>
+              FAQs on <span className="autoGradientText">automation</span>
             </h2>
             <p>Common questions we get when teams start automating seriously.</p>
           </motion.div>
@@ -607,7 +606,6 @@ const AutomationServices = () => {
             </p>
 
             <div className="autoFinalActions">
-              {/* ✅ SAME NUMBER AGAIN */}
               <button
                 className="autoBtn primary big"
                 onClick={() => window.open(whatsappQuote, "_blank")}
@@ -662,32 +660,52 @@ const AutomationServices = () => {
             ))}
           </motion.div>
         </section>
-      </div>
 
-      {/* ===== FINAL COLLABORATION CTA ===== */}
-      <section className="auto-collab-cta">
-        <div className="auto-collab-card">
-          <span className="auto-collab-pill">LET’S COLLABORATE</span>
-
-          <h2>
-            Design the future of your <br />
-            <span>digital business</span>
-          </h2>
-
-          <p>
-            Share your vision and our automation strategists will craft a clear,
-            scalable roadmap tailored to your business workflows.
-          </p>
-
-          {/* ✅ Yahan Webdevelopment jaise ScheduleModal open hoga */}
-          <button
-            className="auto-collab-btn"
-            onClick={() => setIsScheduleOpen(true)}
+        {/* ===== FINAL COLLABORATION CTA (INSIDE autoWrap) ===== */}
+        <section className="autoCollab">
+          <motion.div
+            className="autoCollabCard"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.35 }}
           >
-            Book a Strategy Call
-          </button>
-        </div>
-      </section>
+            <span className="autoCollabPill">LET’S COLLABORATE</span>
+
+            <h2 className="autoCollabTitle">
+              Design the future of your <br />
+              <span className="autoGradientText">digital business</span>
+            </h2>
+
+            <p className="autoCollabDesc">
+              Share your vision and our automation strategists will craft a
+              clear, scalable roadmap tailored to your business workflows.
+            </p>
+
+            <div className="autoCollabActions">
+              <button
+                className="autoBtn primary big"
+                onClick={() => setIsScheduleOpen(true)}
+              >
+                Book a Strategy Call
+              </button>
+
+              <button
+                className="autoBtn ghost big"
+                onClick={() => window.open(whatsappQuote, "_blank")}
+              >
+                WhatsApp Us
+              </button>
+            </div>
+
+            <div className="autoCollabMini">
+              <span>⚡ n8n Workflows</span>
+              <span>🛡️ Monitoring</span>
+              <span>🔗 Integrations</span>
+            </div>
+          </motion.div>
+        </section>
+      </div>
 
       {/* ✅ Strategy Call Modal (same as Webdevelopment) */}
       <ScheduleModal

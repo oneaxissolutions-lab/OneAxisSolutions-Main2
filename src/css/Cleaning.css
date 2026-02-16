@@ -1,3 +1,5 @@
+/* src/css/Cleaning.css */
+
 /* ================= ROOT THEME ================= */
 :root {
   --pink: #ff7aa2;
@@ -6,6 +8,15 @@
   --text-dark: #0f172a;
   --text-light: #475569;
   --white: #ffffff;
+}
+
+/* ✅ HERO HEADING GRADIENT TEXT */
+.hero-gradient-text {
+  background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 50%, #7e9aff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 12px 30px rgba(255, 126, 154, 0.22);
 }
 
 /* ================= PAGE WRAPPER ================= */
@@ -67,10 +78,6 @@
   font-weight: 800;
   color: var(--text-dark);
   margin-bottom: 18px;
-}
-
-.cleaning-highlight {
-  color: var(--pink);
 }
 
 .cleaning-subtitle {
@@ -337,6 +344,9 @@
   overflow: hidden;
   background: #ffffff;
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.14);
+
+  /* ✅ Image choti */
+  height: 420px;
 }
 
 .commercial-image-wrap img {
@@ -553,7 +563,7 @@
 .faq-section {
   width: 100%;
   max-width: 1200px;
-  padding: 70px 0 16px; /* FAQ ke neeche kam gap */
+  padding: 70px 0 16px;
   margin: 0 auto;
 }
 
@@ -757,7 +767,7 @@
 .bottom-cta-section {
   width: 100%;
   max-width: 1200px;
-  margin: -4px auto 10px; /* FAQ ke bilkul paas */
+  margin: -4px auto 10px;
   padding: 0 0 24px;
   display: flex;
   justify-content: center;
@@ -879,6 +889,11 @@
     font-size: 32px;
   }
 
+  /* ✅ Commercial image smaller on 1100 */
+  .commercial-image-wrap {
+    height: 360px;
+  }
+
   .bulk-inner {
     grid-template-columns: 1.1fr 0.9fr;
     gap: 40px;
@@ -986,6 +1001,11 @@
     width: 100%;
   }
 
+  /* ✅ Commercial image smaller on mobile */
+  .commercial-image-wrap {
+    height: 280px;
+  }
+
   .bulk-section {
     padding: 70px 0 70px;
   }
@@ -1049,6 +1069,11 @@
 
   .commercial-text {
     font-size: 14px;
+  }
+
+  /* ✅ Commercial image smaller on very small screens */
+  .commercial-image-wrap {
+    height: 240px;
   }
 
   .bulk-heading {

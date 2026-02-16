@@ -1,3 +1,4 @@
+// src/pages/ProductsCleaning.jsx
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import "../css/ProductsCleaning.css";
 
@@ -12,7 +13,6 @@ import detergentPowderImg from "../assets/detergent.png";
 import garbageBagImg from "../assets/dust.png";
 import scrubImg from "../assets/scrub.png";
 import mothballsImg from "../assets/mothballs.jpeg";
-import blackphenyl from "../assets/blackphenyl.jpeg";
 import floor from "../assets/floor.jpeg";
 import wiper from "../assets/wiper.png";
 import dustbin from "../assets/dustbin.png";
@@ -28,7 +28,8 @@ const PRODUCTS = [
     id: 1,
     name: "White Floor Phenyl",
     image: phenylImg,
-    description: "High-quality white floor disinfectant phenyl for daily mopping.",
+    description:
+      "High-quality white floor disinfectant phenyl for daily mopping.",
     specs: [
       "High active content for effective disinfection",
       "Recommended dilution: 1:20 with water",
@@ -52,7 +53,8 @@ const PRODUCTS = [
     id: 3,
     name: "Mogra Phenyl",
     image: mographenyl,
-    description: "Mogra scented phenyl for long-lasting freshness & disinfection.",
+    description:
+      "Mogra scented phenyl for long-lasting freshness & disinfection.",
     specs: [
       "Refreshing mogra fragrance",
       "Cleans & deodorizes in one step",
@@ -238,14 +240,14 @@ const ProductsCleaning = () => {
   const [activeProduct, setActiveProduct] = useState(null);
   const itemsRef = useRef([]);
 
-  // SIMPLE FADE-IN SCROLL ANIMATION (no left/right slide)
+  // SIMPLE FADE-IN SCROLL ANIMATION
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("show");
-            observer.unobserve(entry.target); // sirf ek baar animate karega
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -253,7 +255,6 @@ const ProductsCleaning = () => {
     );
 
     itemsRef.current.forEach((el) => el && observer.observe(el));
-
     return () => observer.disconnect();
   }, []);
 
@@ -265,6 +266,9 @@ const ProductsCleaning = () => {
         p.description.toLowerCase().includes(term)
     );
   }, [search]);
+
+  // ✅ ON DEMAND ONLY FOR: Rose(2), Mogra(3), Lemon(4)
+  const isOnDemandProduct = (id) => id === 2 || id === 3 || id === 4;
 
   return (
     <main className="products-page">
@@ -311,6 +315,9 @@ const ProductsCleaning = () => {
               <h3>{p.name}</h3>
               <p>{p.description}</p>
 
+              {/* ✅ Built for Quality (ALL PRODUCTS) */}
+              <p className="built-quality-card">Built for Quality.</p>
+
               <div className="product-specs">
                 <span>Manufacturer &amp; Wholesale</span>
                 <span>Bulk Supply • 5L &amp; 50L</span>
@@ -318,6 +325,25 @@ const ProductsCleaning = () => {
 
               <div className="product-footer">
                 <button type="button">VIEW</button>
+
+                {/* ✅ ON DEMAND only for Rose/Mogra/Lemon */}
+                {isOnDemandProduct(p.id) && (
+                  <button
+                    type="button"
+                    className="on-demand-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open(
+                        `https://wa.me/918954535455?text=${encodeURIComponent(
+                          `Hi, I want to enquire about ${p.name}. Is it available on demand?`
+                        )}`,
+                        "_blank"
+                      );
+                    }}
+                  >
+                    ON DEMAND
+                  </button>
+                )}
               </div>
             </div>
           </article>
@@ -326,18 +352,9 @@ const ProductsCleaning = () => {
 
       {/* MODAL */}
       {activeProduct && (
-        <div
-          className="modal-overlay"
-          onClick={() => setActiveProduct(null)}
-        >
-          <div
-            className="modal-box"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="close"
-              onClick={() => setActiveProduct(null)}
-            >
+        <div className="modal-overlay" onClick={() => setActiveProduct(null)}>
+          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <button className="close" onClick={() => setActiveProduct(null)}>
               ×
             </button>
 
@@ -349,7 +366,10 @@ const ProductsCleaning = () => {
               <div>
                 <p>{activeProduct.description}</p>
 
-                {/* SPECS – Key details for each product */}
+                {/* ✅ Built for Quality (ALL PRODUCTS) */}
+                <p className="built-quality">Built for Quality.</p>
+
+                {/* SPECS */}
                 {activeProduct.specs && activeProduct.specs.length > 0 && (
                   <div className="product-specs-list">
                     <strong>Key Specifications:</strong>
@@ -376,6 +396,20 @@ const ProductsCleaning = () => {
                   >
                     Bulk Enquiry
                   </a>
+
+                  {/* ✅ OPTIONAL: On Demand in modal also for Rose/Mogra/Lemon */}
+                  {isOnDemandProduct(activeProduct.id) && (
+                    <a
+                      href={`https://wa.me/918954535455?text=${encodeURIComponent(
+                        `Hi, I want to enquire about ${activeProduct.name}. Is it available on demand?`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="outline secondary-outline"
+                    >
+                      On Demand
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

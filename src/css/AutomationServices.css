@@ -1,3 +1,5 @@
+/* src/css/AutomationServices.css */
+
 /* =================== BASE PAGE =================== */
 .autoPage {
   position: relative;
@@ -29,18 +31,17 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(
-      circle at center,
-      rgba(15, 23, 42, 0.15) 0%,
-      rgba(15, 23, 42, 0.4) 55%,
-      rgba(15, 23, 42, 0.85) 100%
+    circle at center,
+    rgba(15, 23, 42, 0.15) 0%,
+    rgba(15, 23, 42, 0.4) 55%,
+    rgba(15, 23, 42, 0.85) 100%
   );
 }
 
 .autoGlow {
   position: absolute;
   inset: -20%;
-  background:
-    radial-gradient(
+  background: radial-gradient(
       circle at 20% 10%,
       rgba(236, 72, 153, 0.38),
       transparent 55%
@@ -915,77 +916,140 @@
     padding: 18px 16px 20px;
   }
 }
-/* ===== FINAL COLLAB CTA ===== */
-.auto-collab-cta {
-  padding: 6rem 6vw 8rem;
+
+/* =================== FINAL COLLAB CTA (FIXED) =================== */
+.autoCollab {
+  margin-top: 46px;
+  padding: 24px 0 10px;
+  display: grid;
+  place-items: center;
+}
+
+.autoCollabCard {
+  width: min(1120px, 92vw);
+  border-radius: 28px;
+  padding: clamp(18px, 3.6vw, 44px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.autoCollabCard::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #ff9a76 0%, #ff7e9a 50%, #7e9aff 100%);
+  opacity: 0.22;
+  filter: blur(18px);
+  z-index: 0;
+}
+
+.autoCollabCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+      900px 260px at 20% 0%,
+      rgba(255, 154, 118, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      820px 260px at 80% 10%,
+      rgba(126, 154, 255, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 260px at 50% 100%,
+      rgba(255, 126, 154, 0.16),
+      transparent 60%
+    );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.autoCollabPill {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.autoCollabTitle {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.12;
+  color: #f9fafb;
+}
+
+.autoCollabDesc {
+  position: relative;
+  z-index: 1;
+  max-width: 72ch;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.autoCollabActions {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
   display: flex;
   justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.auto-collab-card {
-  width: 100%;
-  max-width: 1100px;
-  border-radius: 28px;
-  padding: 4.5rem 3rem;
-  text-align: center;
-  background: linear-gradient(
-    135deg,
-    #ffb199 0%,
-    #d9b8e6 45%,
-    #9bb6ff 100%
-  );
-  box-shadow:
-    0 40px 90px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+.autoCollabMini {
+  position: relative;
+  z-index: 1;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.auto-collab-pill {
-  display: inline-block;
-  padding: 0.55rem 1.4rem;
+.autoCollabMini span {
+  font-size: 13px;
+  opacity: 0.9;
+  padding: 8px 10px;
   border-radius: 999px;
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  font-weight: 600;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(8px);
-  margin-bottom: 1.8rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.auto-collab-card h2 {
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.15;
-  margin-bottom: 1.2rem;
-}
-
-.auto-collab-card h2 span {
-  opacity: 0.95;
-}
-
-.auto-collab-card p {
-  max-width: 680px;
-  margin: 0 auto 2.5rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.auto-collab-btn {
-  border: none;
-  padding: 0.95rem 2.6rem;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  cursor: pointer;
-  background: linear-gradient(135deg, #ff8a5c, #7f9cff);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.auto-collab-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+@media (max-width: 560px) {
+  .autoCollabActions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .autoCollabActions .autoBtn.big {
+    width: 100%;
+  }
 }

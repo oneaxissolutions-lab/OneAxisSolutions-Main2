@@ -118,6 +118,11 @@ const Navbar = () => {
           <Link to="/cleaning" className="nav-link">
             House Cleaning Products
           </Link>
+
+          {/* PARTNER ZONE (DESKTOP) */}
+          <Link to="/partner-zone" className="nav-link">
+            Partner Zone
+          </Link>
         </div>
 
         {/* Desktop Contact Button */}
@@ -224,6 +229,15 @@ const Navbar = () => {
             onClick={closeSidebar}
           >
             House Cleaning Products
+          </Link>
+
+          {/* PARTNER ZONE (MOBILE) */}
+          <Link
+            to="/partner-zone"
+            className="sidebar-link"
+            onClick={closeSidebar}
+          >
+            Partner Zone
           </Link>
         </nav>
 

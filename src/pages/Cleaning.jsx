@@ -4,63 +4,84 @@ import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom"; // 👈 yeh naya import
+import { useNavigate } from "react-router-dom";
 import "../css/Cleaning.css";
 
 import industryImg from "../assets/industrial-cleaning.jpg";
 import commercialImg from "../assets/commercial-cleaning.jpg";
 import faqVideo from "../assets/video2.mp4";
 
-/* ============ FRAMER MOTION VARIANTS ============ */
+/* ============ PREMIUM FRAMER MOTION VARIANTS (UPDATED) ============ */
+
+const easeOutExpo = [0.16, 1, 0.3, 1];
 
 const heroLeft = {
-  hidden: { opacity: 0, x: -60 },
+  hidden: { opacity: 0, x: -70, filter: "blur(10px)" },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
+    filter: "blur(0px)",
+    transition: { duration: 0.9, ease: easeOutExpo },
   },
 };
 
 const heroRight = {
-  hidden: { opacity: 0, x: 60, scale: 0.95 },
+  hidden: { opacity: 0, x: 70, scale: 0.92, rotate: 2, filter: "blur(10px)" },
   visible: {
     opacity: 1,
     x: 0,
     scale: 1,
-    transition: { duration: 0.8, ease: "easeOut" },
+    rotate: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.95, ease: easeOutExpo },
   },
 };
 
 const sectionFadeUp = {
-  hidden: { opacity: 0, y: 60 },
+  hidden: { opacity: 0, y: 60, filter: "blur(8px)" },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
+    filter: "blur(0px)",
+    transition: { duration: 0.85, ease: easeOutExpo },
   },
 };
 
+// stagger container for lists/cards
+const staggerWrap = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.06 },
+  },
+};
+
+// card animation (child)
 const cardFadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i = 0) => ({
+  hidden: { opacity: 0, y: 24, scale: 0.98, filter: "blur(6px)" },
+  visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-      delay: i * 0.08,
-    },
-  }),
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.55, ease: easeOutExpo },
+  },
 };
 
 const faqItemVariant = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 18, scale: 0.985, filter: "blur(6px)" },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.45, ease: easeOutExpo },
   },
+};
+
+const hoverLift = {
+  y: -6,
+  scale: 1.01,
+  transition: { type: "spring", stiffness: 260, damping: 18 },
 };
 
 // right-side face ko front banane ke liye base rotation
@@ -128,7 +149,7 @@ const Cleaning = () => {
   const pointerRef = useRef({ x: 0, y: 0 });
 
   const [openIndex, setOpenIndex] = useState(null);
-  const navigate = useNavigate(); // 👈 yahan se routes change karenge
+  const navigate = useNavigate();
 
   const toggleFaq = (index) => {
     setOpenIndex((prev) => (prev === index ? null : index));
@@ -300,26 +321,25 @@ const Cleaning = () => {
             MANUFACTURER &amp; WHOLESALE SUPPLIER — BULK SUPPLY
           </p>
 
+          {/* ✅ UPDATED: Full heading in gradient */}
           <h1 className="cleaning-heading">
-            OneAxis-EcoClean <br />
-            <span className="cleaning-highlight">Deep Shine</span>
+            <span className="hero-gradient-text">OneAxis-EcoClean</span> <br />
+            <span className="hero-gradient-text">Deep Shine</span>
             <br />
-            Solutions for Modern <br />
-            Businesses
+            <span className="hero-gradient-text">Solutions for Modern</span> <br />
+            <span className="hero-gradient-text">Businesses</span>
           </h1>
 
           <p className="cleaning-subtitle">
-            Premium, industrial-grade and eco-responsible cleaning products
-            designed for businesses that value hygiene, safety and brand image.
+            Premium industrial cleaning solutions crafted for professional
+            spaces.
           </p>
 
           <div className="cleaning-cta-row">
-            {/* ✅ WhatsApp – Get Quote */}
             <button className="cleaning-btn-primary" onClick={openWhatsApp}>
               Get Quote
             </button>
 
-            {/* ✅ View Products – route change */}
             <button
               className="cleaning-btn-secondary"
               onClick={() => navigate("/cleaning/products")}
@@ -382,7 +402,6 @@ const Cleaning = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.5 }}
-          custom={0}
         >
           <h2>Why Choose OneAxis-EcoClean</h2>
           <p>
@@ -398,7 +417,8 @@ const Cleaning = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.4 }}
-            custom={0.2}
+            whileHover={{ scale: 1.01 }}
+            transition={{ type: "spring", stiffness: 200, damping: 18 }}
           >
             <img src={industryImg} alt="Industrial Cleaning" />
             <span className="why-badge">Expert Service</span>
@@ -410,7 +430,6 @@ const Cleaning = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.4 }}
-            custom={0.4}
           >
             <span className="why-pill">INDUSTRY LEADER</span>
 
@@ -422,7 +441,13 @@ const Cleaning = () => {
               surface protection across large-scale facilities.
             </p>
 
-            <div className="why-cards">
+            <motion.div
+              className="why-cards"
+              variants={staggerWrap}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.35 }}
+            >
               {[
                 {
                   title: "Heavy-Duty Performance",
@@ -436,21 +461,19 @@ const Cleaning = () => {
                   title: "Certified & Surface-Safe",
                   desc: "Tested across sensitive surfaces and regulated workspaces so you get dependable performance that meets audit and compliance expectations.",
                 },
-              ].map((card, i) => (
+              ].map((card) => (
                 <motion.div
                   key={card.title}
                   className="why-card"
                   variants={cardFadeUp}
-                  custom={i}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.4 }}
+                  whileHover={hoverLift}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <h4>{card.title}</h4>
                   <p>{card.desc}</p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.section>
@@ -469,6 +492,8 @@ const Cleaning = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.4 }}
+          whileHover={{ scale: 1.01 }}
+          transition={{ type: "spring", stiffness: 200, damping: 18 }}
         >
           <img src={commercialImg} alt="Commercial office cleaning" />
         </motion.div>
@@ -503,15 +528,16 @@ const Cleaning = () => {
                 { main: "15+", sub: "Years Experience" },
                 { main: "Custom", sub: "Cleaning Plans" },
                 { main: "Professional", sub: "Service Standards" },
-              ].map((item, i) => (
+              ].map((item) => (
                 <motion.div
                   key={item.sub}
                   className="commercial-stat-card"
                   variants={cardFadeUp}
-                  custom={i}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.4 }}
+                  whileHover={hoverLift}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <div className="commercial-stat-main">{item.main}</div>
                   <div className="commercial-stat-sub">
@@ -550,7 +576,13 @@ const Cleaning = () => {
               that keep you stocked without last-minute scramble.
             </p>
 
-            <div className="bulk-cols">
+            <motion.div
+              className="bulk-cols"
+              variants={staggerWrap}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.35 }}
+            >
               {[
                 {
                   title: "Offices & Corporates",
@@ -568,23 +600,20 @@ const Cleaning = () => {
                   title: "Industrial & Warehouses",
                   desc: "Heavy-duty options for shopfloors, loading bays and storage areas where uptime and safety matter most.",
                 },
-              ].map((item, i) => (
+              ].map((item) => (
                 <motion.div
                   key={item.title}
                   className="bulk-col"
                   variants={cardFadeUp}
-                  custom={i}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.4 }}
+                  whileHover={hoverLift}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <h4>{item.title}</h4>
                   <p>{item.desc}</p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            {/* ✅ Bulk Pricing → WhatsApp */}
             <button className="bulk-btn" onClick={openWhatsApp}>
               Discuss Bulk Pricing
             </button>
@@ -606,10 +635,19 @@ const Cleaning = () => {
               { main: "100K+", sub: "Units Supplied Yearly" },
               { main: "Dedicated", sub: "Account Support" },
             ].map((item) => (
-              <div key={item.sub} className="bulk-card">
+              <motion.div
+                key={item.sub}
+                className="bulk-card"
+                variants={cardFadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.35 }}
+                whileHover={hoverLift}
+                whileTap={{ scale: 0.98 }}
+              >
                 <div className="bulk-card-main">{item.main}</div>
                 <div className="bulk-card-sub">{item.sub}</div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -621,7 +659,7 @@ const Cleaning = () => {
         variants={sectionFadeUp}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
       >
         <div className="faq-inner">
           {/* LEFT: VIDEO */}
@@ -630,7 +668,9 @@ const Cleaning = () => {
             variants={cardFadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once: true, amount: 0.4 }}
+            whileHover={{ scale: 1.01 }}
+            transition={{ type: "spring", stiffness: 200, damping: 18 }}
           >
             <div className="faq-video-card">
               <div className="faq-video-gradient" />
@@ -656,7 +696,7 @@ const Cleaning = () => {
             variants={cardFadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once: true, amount: 0.4 }}
           >
             <div className="faq-header">
               <h2>Frequently Asked Questions</h2>
@@ -666,15 +706,15 @@ const Cleaning = () => {
               </p>
             </div>
 
-            <div className="faq-list">
+            <motion.div
+              className="faq-list"
+              variants={staggerWrap}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.35 }}
+            >
               {FAQ_DATA.map((item, index) => (
-                <motion.div
-                  key={item.question}
-                  variants={faqItemVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.45 }}
-                >
+                <motion.div key={item.question} variants={faqItemVariant}>
                   <FAQItem
                     question={item.question}
                     answer={item.answer}
@@ -683,25 +723,26 @@ const Cleaning = () => {
                   />
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* ========== BOTTOM CTA BUTTONS ========== */}
+      {/* ========== BOTTOM CTA BUTTONS (LEFT SIDE IN) ========== */}
       <motion.section
         className="bottom-cta-section"
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, x: -70, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
         viewport={{ once: false, amount: 0.4 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
+        transition={{ duration: 0.85, ease: easeOutExpo }}
       >
-        <div className="bottom-cta-inner">
-          <p className="bottom-cta-label">
-            Explore more about OneAxis-EcoClean
-          </p>
+        <motion.div
+          className="bottom-cta-inner"
+          whileHover={{ scale: 1.01 }}
+          transition={{ type: "spring", stiffness: 220, damping: 18 }}
+        >
+          <p className="bottom-cta-label">Explore more about OneAxis-EcoClean</p>
           <div className="bottom-cta-buttons">
-            {/* ✅ AboutCleaning.jsx route */}
             <button
               className="bottom-cta-btn primary"
               onClick={() => navigate("/cleaning/about")}
@@ -709,7 +750,6 @@ const Cleaning = () => {
               About Us
             </button>
 
-            {/* ✅ ProductsCleaning.jsx route */}
             <button
               className="bottom-cta-btn secondary"
               onClick={() => navigate("/cleaning/products")}
@@ -717,7 +757,7 @@ const Cleaning = () => {
               Products
             </button>
           </div>
-        </div>
+        </motion.div>
       </motion.section>
     </div>
   );
