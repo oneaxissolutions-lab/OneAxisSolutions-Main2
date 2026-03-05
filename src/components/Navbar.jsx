@@ -71,6 +71,7 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${!isVisible ? "navbar-hidden" : ""}`}>
       <div className="navbar-container">
+
         {/* Logo */}
         <Link to="/" className="navbar-logo">
           <img src={logoImg} alt="OneAxis Logo" className="navbar-logo-img" />
@@ -78,6 +79,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="navbar-menu">
+
           <Link to="/" className="nav-link">
             Home
           </Link>
@@ -98,16 +100,20 @@ const Navbar = () => {
                 />
               </svg>
             </a>
+
             <div className="dropdown-menu">
               <Link to="/Webdevelopment" className="dropdown-item">
                 Website Development
               </Link>
+
               <Link to="/softwares" className="dropdown-item">
                 Mobile Development
               </Link>
+
               <Link to="/interior" className="dropdown-item">
                 Interior Design
               </Link>
+
               <Link to="/automation" className="dropdown-item">
                 Automation Services
               </Link>
@@ -119,10 +125,6 @@ const Navbar = () => {
             House Cleaning Products
           </Link>
 
-          {/* PARTNER ZONE (DESKTOP) */}
-          <Link to="/partner-zone" className="nav-link">
-            Partner Zone
-          </Link>
         </div>
 
         {/* Desktop Contact Button */}
@@ -147,6 +149,7 @@ const Navbar = () => {
             <span></span>
           </span>
         </button>
+
       </div>
 
       {/* Sidebar Overlay */}
@@ -156,6 +159,7 @@ const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <div className={`mobile-sidebar ${isSidebarOpen ? "open" : ""}`}>
+
         <div className="sidebar-header">
           <div className="sidebar-logo">
             <Link to="/" onClick={closeSidebar}>
@@ -166,6 +170,7 @@ const Navbar = () => {
               />
             </Link>
           </div>
+
           <button
             className="sidebar-close"
             onClick={closeSidebar}
@@ -183,13 +188,15 @@ const Navbar = () => {
         </div>
 
         <nav className="sidebar-nav">
+
           <Link to="/" className="sidebar-link" onClick={closeSidebar}>
             Home
           </Link>
 
-          {/* SERVICES DROPDOWN (MOBILE) */}
+          {/* SERVICES MOBILE */}
           <div className="sidebar-dropdown">
             <div className="sidebar-dropdown-label">Services</div>
+
             <div className="sidebar-dropdown-content">
               <Link
                 to="/Webdevelopment"
@@ -198,6 +205,7 @@ const Navbar = () => {
               >
                 Website Development
               </Link>
+
               <Link
                 to="/softwares"
                 className="sidebar-sublink"
@@ -205,6 +213,7 @@ const Navbar = () => {
               >
                 Mobile Development
               </Link>
+
               <Link
                 to="/interior"
                 className="sidebar-sublink"
@@ -212,6 +221,7 @@ const Navbar = () => {
               >
                 Interior Design
               </Link>
+
               <Link
                 to="/automation"
                 className="sidebar-sublink"
@@ -222,7 +232,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* HOUSE CLEANING PRODUCTS (MOBILE) */}
+          {/* HOUSE CLEANING PRODUCTS */}
           <Link
             to="/cleaning"
             className="sidebar-link"
@@ -231,14 +241,6 @@ const Navbar = () => {
             House Cleaning Products
           </Link>
 
-          {/* PARTNER ZONE (MOBILE) */}
-          <Link
-            to="/partner-zone"
-            className="sidebar-link"
-            onClick={closeSidebar}
-          >
-            Partner Zone
-          </Link>
         </nav>
 
         <div className="sidebar-footer">
@@ -246,6 +248,7 @@ const Navbar = () => {
             Contact Us
           </button>
         </div>
+
       </div>
 
       {/* Contact Modal */}
