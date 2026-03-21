@@ -359,7 +359,7 @@ export default function GraphicDesign() {
         <canvas className="hero-canvas" ref={heroCanvas} style={{ width:"100%", height:"100%" }} />
         <div className="hero-inner">
           <div>
-            <div className="hero-pill"><span className="pill-d" />Graphic Design Studio — Est. 2018</div>
+            <div className="hero-pill"><span className="pill-d" />Graphic Design Studio</div>
             <h1 className="hero-h1">We Design<br /><span className="gt">Things That</span>Matter.</h1>
             <p className="hero-sub">Brand identities, motion design, editorial work, and digital experiences that don't just look beautiful — they make people stop, feel, and remember.</p>
             <div className="hero-acts">
