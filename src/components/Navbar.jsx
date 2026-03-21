@@ -74,7 +74,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link to="/" className="navbar-logo">
-          <img src={logoImg} alt="OneAxis Logo" className="navbar-logo-img" />
+          <img src={logoImg} alt="Logo" className="navbar-logo-img" />
         </Link>
 
         {/* Desktop Menu */}
@@ -117,17 +117,17 @@ const Navbar = () => {
               <Link to="/automation" className="dropdown-item">
                 Automation Services
               </Link>
+
+              {/* ✅ NEW GRAPHIC DESIGN */}
+              <Link to="/graphic-design" className="dropdown-item">
+                Graphic Design
+              </Link>
             </div>
           </div>
 
-          {/* HOUSE CLEANING PRODUCTS */}
-          <Link to="/cleaning" className="nav-link">
-            House Cleaning Products
-          </Link>
-
         </div>
 
-        {/* Desktop Contact Button */}
+        {/* Contact Button */}
         <button
           className="contact-btn"
           onClick={() =>
@@ -152,7 +152,7 @@ const Navbar = () => {
 
       </div>
 
-      {/* Sidebar Overlay */}
+      {/* Overlay */}
       {isSidebarOpen && (
         <div className="sidebar-overlay" onClick={closeSidebar}></div>
       )}
@@ -161,29 +161,12 @@ const Navbar = () => {
       <div className={`mobile-sidebar ${isSidebarOpen ? "open" : ""}`}>
 
         <div className="sidebar-header">
-          <div className="sidebar-logo">
-            <Link to="/" onClick={closeSidebar}>
-              <img
-                src={logoImg}
-                alt="OneAxis Logo"
-                className="sidebar-logo-img"
-              />
-            </Link>
-          </div>
+          <Link to="/" onClick={closeSidebar}>
+            <img src={logoImg} alt="Logo" className="sidebar-logo-img" />
+          </Link>
 
-          <button
-            className="sidebar-close"
-            onClick={closeSidebar}
-            aria-label="Close menu"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M6 18L18 6M6 6l12 12" />
-            </svg>
+          <button className="sidebar-close" onClick={closeSidebar}>
+            ✕
           </button>
         </div>
 
@@ -198,48 +181,30 @@ const Navbar = () => {
             <div className="sidebar-dropdown-label">Services</div>
 
             <div className="sidebar-dropdown-content">
-              <Link
-                to="/Webdevelopment"
-                className="sidebar-sublink"
-                onClick={closeSidebar}
-              >
+
+              <Link to="/Webdevelopment" className="sidebar-sublink" onClick={closeSidebar}>
                 Website Development
               </Link>
 
-              <Link
-                to="/softwares"
-                className="sidebar-sublink"
-                onClick={closeSidebar}
-              >
+              <Link to="/softwares" className="sidebar-sublink" onClick={closeSidebar}>
                 Mobile Development
               </Link>
 
-              <Link
-                to="/interior"
-                className="sidebar-sublink"
-                onClick={closeSidebar}
-              >
+              <Link to="/interior" className="sidebar-sublink" onClick={closeSidebar}>
                 Interior Design
               </Link>
 
-              <Link
-                to="/automation"
-                className="sidebar-sublink"
-                onClick={closeSidebar}
-              >
+              <Link to="/automation" className="sidebar-sublink" onClick={closeSidebar}>
                 Automation Services
               </Link>
+
+              {/* ✅ NEW GRAPHIC DESIGN */}
+              <Link to="/graphic-design" className="sidebar-sublink" onClick={closeSidebar}>
+                Graphic Design
+              </Link>
+
             </div>
           </div>
-
-          {/* HOUSE CLEANING PRODUCTS */}
-          <Link
-            to="/cleaning"
-            className="sidebar-link"
-            onClick={closeSidebar}
-          >
-            House Cleaning Products
-          </Link>
 
         </nav>
 
