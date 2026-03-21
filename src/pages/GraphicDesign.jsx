@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "../css/GraphicDesign.css";
 import gp1 from "../assets/gp1.png";
-import GraphicModal from "../components/GraphicModal";
+import GraphicModal from "../pages/GraphicModal";
 import ScheduleModal from "../components/ScheduleModal";
 
 /* ══════════════════════════════
