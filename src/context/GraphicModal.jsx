@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import '../css/GraphicModal.css';
+import '../css/Graphicmodal.css';
 
 const GraphicModal = ({ isOpen, onClose }) => {
 
